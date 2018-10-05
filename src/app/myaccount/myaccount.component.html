@@ -1,0 +1,235 @@
+<section class="m_bottom">
+    <div class="container">
+
+        <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+            <input type="text" placeholder="My Account">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a>Home</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    <a>Account</a>
+                </li>
+            </ol>
+        </div>
+
+
+        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+            <ul class="sidebar-menu">
+                <li>
+                    <a>
+                        <img class="beer" src="assets/Images/assets/Orders.png">
+                        <span>My Orders</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+                    <!--                     
+                      <ul class="sidebar-submenu" style="display: none;">
+                          <li><a>Profil Information</a></li>
+                          <li><a>Manage Addresses</a></li>
+                          <li><a >Payment methods</a></li>
+                        </ul> -->
+                </li>
+                <li>
+                    <a>
+                        <img class="beer" src="assets/Images/assets/account.png">
+                        <span>My Account</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu" style="display: none;">
+                        <li (click)="onchange(0)">
+                            <a>Profil Information</a>
+                        </li>
+                        <li (click)="onchange(1)">
+                            <a>Manage Addresses</a>
+                        </li>
+                        <li (click)="onchange(2)">
+                            <a>Payment methods</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="star_color">
+                    <a>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        <span>Favorites</span>
+                        <i class="fa fa-angle-down pull-right"></i>
+                    </a>
+
+                </li>
+
+                <li class="">
+                    <a (click)="userlogout()">
+                        <img class="beer" src="assets/Images/assets/logout.png">
+                        <span>Log Out</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div #profile style="display:none" class=" col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <div class="border_bottom">
+                <div class="profile col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <span class="img_class">
+                        <img src='assets/Images/assets/beer-bg.png' />
+                    </span>
+
+                    <h5 class="margin_top">{{myaccountdetailes.FirstName}} {{myaccountdetailes.LastName}}</h5>
+                    <h5 class="email">{{myaccountdetailes.EmailId}}</h5>
+                </div>
+                <div class="float_right col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <button class="btn" data-toggle="modal" data-target="#myModalHorizontal">
+                        <img src='assets/Images/assets/Edit.png' /> Edit Profile
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div>
+                    <h5 class="mobile_number">Mobile Number</h5>
+                    <h5 class="contact">+0 {{myaccountdetailes.ContactNo}}</h5>
+                </div>
+                <div>
+                    <h5 class="mobile_number">Gender</h5>
+                    <h5 class="contact">{{myaccountdetailes.Gender}}</h5>
+                </div>
+
+                <div>
+                    <h5 class="mobile_number">Date Of Birth</h5>
+                    <h5 class="contact">{{myaccountdetailes.DOBDt}}</h5>
+                </div>
+            </div>
+
+        </div>
+
+        <div #payment style="display:none" class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <table class="width_100">
+                <thead class="payment_method">
+                    <tr>
+                        <th>
+                            <h5>Add Payment Method</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <h5 class="card_number">********* 2759</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 class="card_number">********* 2759</h5>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div #address style="display:none" class=" col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <table class="width_100">
+                <thead class="payment_method">
+                    <tr (click)="addnewaddress()">
+                        <th>
+                            <h5>Add New Address</h5>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="address-container" *ngFor="let getaddress of getaddresslist">
+                        <td>
+                            <h4 class="address">{{getaddress.AddressName}}</h4>
+                            <h5 class="city_state">{{getaddress.Address1}} {{getaddress.Address2}} {{getaddress.City}},{{getaddress.State}},{{getaddress.Zip}}</h5>
+
+                        </td>
+                        <div class="address-button-container">
+                            <span *ngIf="getaddress.IsDefault== true" class="default-add-mark">Active</span>
+                            <button *ngIf="!getaddress.IsDefault== true" class="btn btn-default make-default" (click)="onAddressSelect(getaddress)">Make Default</button>
+                            <button *ngIf="!getaddress.IsDefault== true" class="btn btn-default delete" (click)="onAddressDelete(getaddress)">Delete</button>
+
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModalHorizontal" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    My Account
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <form class="form-horizontal" [formGroup]="editForm" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12 control-label">FirstName</label>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Name" formControlName="fname" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12 control-label">LastName</label>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Name" formControlName="lname" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12 control-label" for="inputEmail3">Email</label>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12 control-label" for="inputPassword3">Phone Number</label>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" placeholder="PhoneNumber" formControlName="phnumber" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-3 col-md-3 col-sm-6 col-xs-12 control-label" for="inputPassword3">Gender</label>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <input type="radio" name="gender" placeholder="Gender" formControlName="gender" /> Male
+                            <input type="radio" name="gender" placeholder="Gender" formControlName="gender" />Female
+                        </div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+                <button (click)="updatecustormerdetails()" type="submit" class="btn btn-primary">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

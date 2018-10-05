@@ -1,0 +1,200 @@
+ul li.star_color i.fa-star{
+    color: #ec1c24;
+}
+.profile span.img_class img{
+    height: 85px;
+    width: 70px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 30px;
+}
+.border_bottom{
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 10px; 
+    float: left;
+    width: 100%;
+}
+.margin_top{
+    font-family: Poppinsbold;
+    font-size: 30px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919;
+}
+.email{
+    font-family: Montserratregular;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919;
+}
+.float_right button{
+    float: right;
+    background-color: transparent;
+}
+.float_right button:active,.float_right button:focus{
+    background-color: transparent;
+outline: none;
+}
+ul.sidebar-menu img{
+    height: 15px;
+    margin-right: 10px;
+}
+ul.sidebar-menu li a{
+    text-transform: uppercase;
+}
+ul.sidebar-menu li a,ul.sidebar-menu li ul.sidebar-submenu li a{
+    font-family: poppinsbold;
+    font-size: 14px;
+    font-stretch: normal;
+    line-height: 1.86;
+    letter-spacing: 0.3px;
+    text-align: left;
+    color: #222222 !important;
+    padding: 12px 5px 12px 15px;
+    display: block;
+  
+}
+ul.sidebar-menu li ul.sidebar-submenu li a{
+    font-family: poppinsbold;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+table.width_100{
+    width: 100%;
+}
+table.width_100 thead.payment_method{
+    /* opacity: 0.03; */
+    background-color: #f6f6f6 !important;
+}
+thead.payment_method tr th h5{
+ font-family: montserratregular;
+  font-size: 15px;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ea1c2d !important;  
+}
+ul.sidebar-menu li:focus{
+box-shadow: none;
+outline: none !important;
+}
+table.width_100 thead th{
+    padding: 10px;
+}
+table.width_100 tr td{
+    padding: 10px;
+}
+/* .address-container td{
+    border-bottom: 1px dotted red;
+    cursor: pointer;
+} */
+.address-container{
+    border-bottom: 1px dotted red;
+
+}
+.address-button-container {
+    margin: 15px;
+}
+
+.mobile_number{
+    font-family: Poppinsbold;
+  font-size: 12px;
+  font-stretch: normal;
+  line-height: 2.17;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #555555;
+  text-transform: uppercase;
+}
+.contact{
+    font-family: Poppinsregular;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: 1.44;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #222222;
+    text-transform: uppercase;
+}
+button.btn{
+    font-family: Poppinsbold;
+    font-size: 14px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919; 
+    
+}
+.card_number{
+    font-family: montserratregular;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262628;
+}
+.address{
+    font-family: Montserratbold;
+    font-size: 18px;
+}
+.address,.city_state{
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262628;
+}
+.city_state{
+    font-family: Montserratregular;
+    font-size: 16px;
+}
+
+
+.address-button-container .make-default{
+    background-color:#17a2b8;
+    color: #fff;
+}
+
+.address-button-container .delete{
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.default-add-mark {
+    background: green;
+    padding: 10px;
+    color: #fff;
+}
+
+@media screen and (min-width:320px) and (max-width:767px){
+
+ul.sidebar-menu,.border_bottom {
+    margin-top:20px;
+}
+.float_right h4{
+    float: left;
+    font-size: 12px;
+}
+.margin_top,.email {
+    font-size: 10px;
+}
+
+
+}
+
+@media screen and (min-width:320px) and (max-width:500px){
+    .profile,.float_right{
+        width:100%;
+    }
+    
+}
+

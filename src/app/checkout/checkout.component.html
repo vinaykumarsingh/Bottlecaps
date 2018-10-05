@@ -1,0 +1,304 @@
+<style>
+  @media only screen and (max-width: 700px) {
+
+    table.res_table td:nth-of-type(1):before {
+      content: "Your Saved Card";
+    }
+    table.res_table td:nth-of-type(2):before {
+      content: "Name on card";
+    }
+    table.res_table td:nth-of-type(3):before {
+      content: "Expires on";
+    }
+
+  }
+</style>
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template" style="margin:0 auto; text-align: center;"
+  [zIndex]="9999"></ng4-loading-spinner>
+<div class="container">
+  <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+    <input type="text" placeholder="Check Out">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/']">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a [routerLink]="['/cart']">Cart</a>
+      </li>
+      <li class="breadcrumb-item active">
+        <a>CheckOut</a>
+      </li>
+    </ol>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12 animated slideInLeft">
+      <div #dtype id="dtype" style="display: none;">
+        <h4> Address</h4>
+        <div class="row">
+
+          <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6 new_address">
+
+
+            <div class="border_doted">
+              <ng-container *ngFor="let address of addressgetlist">
+                <div class="width_70">
+                  <ng-container *ngIf="address.IsDefault==true">
+                    <span>{{address.Address1}}</span>
+                    <br>
+                    <small>{{address.City}},{{address.State}} {{address.Zip}}</small>
+                  </ng-container>
+                </div>
+
+              </ng-container>
+              <img src="assets/Images/assets/selected.png">
+              <h4>
+                <a class="edit">Edit</a>
+                <a class="float_right" (click)="gotoaddress(2)">Change Address</a>
+              </h4>
+            </div>
+
+
+          </div>
+
+
+          <div class=" col-md-6 col-sm-6 col-lg-6 col-xs-6 new_address">
+
+            <div class="border_doted_center" (click)="addnewaddress()">
+              <h4>
+                <img src="assets/Images/assets/new-address.png">
+              </h4>
+              <h4>Add New Address</h4>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="deliver">
+          <h5 class="float_left">Deliver as Soon as possible</h5>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <h6>Schedule Delivary</h6>
+          <div class="date_time">
+            <input type="text" id="datepicker" placeholder="Date" class="datepicker">
+            <img class="date_img" src="assets/Images/assets/date.png">
+            <input type="text" placeholder="Time" class="datepicker">
+            <img class="time_img" src="assets/Images/assets/time.png">
+          </div>
+        </div>
+
+      </div>
+      <div id="no-more-tables" class="border_top">
+        <h4>Payment Method</h4>
+        <table class="table res_table">
+          <thead>
+            <tr>
+              <th>Your Saved Card</th>
+              <th>Name on card</th>
+              <th>Expires on</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border_bottom">
+
+              <td>
+                <div class="">
+                  <img class="selected" src='assets/Images/assets/selected.png' />
+                  <img class="visa" src='assets/Images/assets/visa.png' />
+                  <span>**** **** **** 1234</span>
+                </div>
+                <div>
+                  <input class="input_right" placeholder="Enter Cvv" type="text">
+                </div>
+
+
+              </td>
+              <td>
+                <h5>Product Name</h5>
+              </td>
+              <td>
+                <h5>06/2019</h5>
+              </td>
+
+            </tr>
+            <tr>
+
+              <td>
+                <div class="visa_cards">
+                  <img class="selected" src='assets/Images/assets/selected.png' />
+                  <img class="visa" src='assets/Images/assets/visa.png' />
+                  <span>**** **** **** 1234</span>
+
+                </div>
+
+              </td>
+              <td>
+                <h5>Product Name</h5>
+              </td>
+              <td>
+                <h5>06/2019</h5>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+        <div class="text_center">
+
+          <button type="button" (click)="showAddPaymentModalDialog()" pButton icon="pi pi-info-circle" label="Show">Add New Payment Mentment</button>
+
+          <!-- <h5><a href="#">Add New Payment Mentment</a></h5> -->
+        </div>
+        <div class="special_instructions">
+          <h5>Special Instructions</h5>
+          <textarea placeholder="Please enter notes here (Optional)"></textarea>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bill_summary col-md-6 col-sm-6 col-lg-6 col-xs-12 animated slideInRight">
+      <table class="table text_left">
+        <!-- <thead>
+        <tr>
+          <th>Product Details</th>
+          <th>Product Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+      </thead> -->
+        <tbody>
+
+          <tr *ngFor="let cartdetail of cartdetails">
+            <td>
+              <div class="img_div">
+                <!-- <img class="second_img" src='assets/Images/Product Page_1.png' /> -->
+                <img class="second_img" src='{{cartdetail.ProductImage}}' />
+              </div>
+            </td>
+            <td>
+              <div class="Product_name">
+                <h5>{{cartdetail.ProductName}}</h5>
+                <h5 class="Product_price">{{cartdetail.PriceDisplay}}</h5>
+                <span class="font_size">Quantity:{{cartdetail.QuantityOrdered}}</span>
+              </div>
+            </td>
+            <td>
+              <h5>Edit Order</h5>
+              <h5 class="Product_price">{{cartdetail.ItemTotalDisplay}}</h5>
+            </td>
+
+          </tr>
+
+
+          <tr>
+
+            <td>
+              <h5 class="summary">Summary</h5>
+            </td>
+            <ng-container *ngFor="let charge of charges">
+              <td class="left_10">
+                <h5 class="summary">SubTotal</h5>
+                <h5>Delevary Free</h5>
+
+                <img src='assets/Images/assets/add-tip.png' />
+                <h5>{{charge.ChargeTitle}}</h5>
+                <h5>{{charge.ChargeTitle}}</h5>
+
+              </td>
+              <!-- <td class="top_10">
+              <h5>{{subdata.SubTotalDisplay}}</h5>
+              <h5>{{subdata.ChargeAmountDisplay}}</h5>
+              <h5>{{subdata.ChargeAmountDisplay}}</h5>
+              <h5>{{subdata.ItemTotalDisplay}}</h5>
+            
+            </td> -->
+            </ng-container>
+          </tr>
+          <tr class="border_top_bottom">
+            <td></td>
+            <td class="coupon_img">
+              <img src='assets/Images/assets/coupon.png' />
+              <h5>Apply Coupon Code</h5>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td>$65.00</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+
+      <div class="checkout_button">
+        <button class="btn btn-default cancel">Cancel</button>
+        <button class="btn btn-default checkout">Checkout</button>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+  <!-- payment modal -->
+<!-- 
+  <p-dialog header="Add New Payment Mentment" [(visible)]="displayAddPaymentModal" [modal]="true" [responsive]="true" [width]="350"
+    [minWidth]="200" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+      <div class="form-container">
+        <div class="row columns">
+          <label>cardNumber
+            <input type="number" formControlName="cardNumber">
+          </label>
+          <label>expiryDate
+            <input type="number" formControlName="expiryDate1">
+            <input type="number" formControlName="expiryDate2">
+
+          </label>
+
+          <label>firstName
+            <input type="text" formControlName="firstName">
+          </label>
+          <label>lastName
+            <input type="text" formControlName="lastName">
+          </label>
+
+          <label>Address
+            <textarea formControlName="Address"></textarea>
+          </label>
+          <label>city
+            <input type="text" formControlName="city">
+          </label>
+          <label>state
+            <input type="text" formControlName="state">
+          </label>
+          <label>ZIpCode
+            <input type="text" formControlName="ZipCode">
+          </label>
+          <label>PhoneNumber
+            <input type="text" appPhoneMask formControlName="PhoneNumber">
+          </label>
+
+          <input type="checkbox" name="markDefault" formControlName="markDefault" value="1">
+        </div>
+      </div>
+
+      <p-footer>
+          <button type="button" pButton icon="pi pi-check" [disabled]="!rForm.valid" (click)="AddPaymentCard($event)" label="Yes"></button>
+          <button type="button" pButton icon="pi pi-close" (click)="displayAddPaymentModal=false" label="No"
+            class="ui-button-secondary"></button>
+        </p-footer>
+    </form>
+
+
+  </p-dialog> -->

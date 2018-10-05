@@ -1,0 +1,180 @@
+<!--footer-->
+
+<footer>
+  <div class="container">
+      <div class="row">
+          <!-- row -->
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img footer_image">
+                  <a href="#">
+                     <img src="assets/Images/foorterlogo.png" alt="Battlecapse">
+                  </a>
+                  <div class="margin_left">
+                   
+                   <address class="storelocation">
+                     <!-- <span class="storename">{{ StoreName}}</span><br><br> -->
+                      <img class="location"src="assets/Images/assets/location.png">{{Location}}<br>
+                      <!-- <ng-container *ngFor="let footerdata of footerdata"> -->
+                      <span class="margin_left">{{storename}}</span> <br><br>
+                     
+                    <span class="margin_left"> {{Address1}}</span><br><br>
+                      <span class="margin_left">{{City}},{{State}}</span><br><br>
+                      <div class="contact_text">
+                      <img class="contact" src="assets/Images/assets/contact.png"><span class="call"> Call: {{Phone}}</span> <br><br>
+                  </div>
+                  <div>
+                      <img class="email" src="assets/Images/assets/email.png"> <span class="call">Email: {{StoreEmail}}</span>
+                  </div>
+               <!-- </ng-container> -->
+                  </address> 
+              
+                      </div>
+          </div>
+          <div class="accounts col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+              <h4 class="font_size">Accounts</h4>
+              <ul class="list-unstyled clear-margins">
+              <!-- <li *ngFor="let accountname of Accountname"><a>{{accountname.name}}</a></li> -->
+          
+              <li><a (click)="myorders()">My Orders</a></li>
+       
+         
+       
+         <ng-container *ngIf="userid!=0">
+              <li><a [routerLink]="['/myaccount']" [queryParams]="{'id':1}">My Payment method</a></li>
+          </ng-container>    
+          <ng-container *ngIf="userid==0">
+                  <li><a [routerLink]="['/login']" >My Payment method</a></li>
+              </ng-container>
+              <ng-container *ngIf="userid!=0">  
+              <li><a [routerLink]="['/myaccount']" [queryParams]="{'id':2}">My Address</a></li> 
+              </ng-container>
+              <ng-container *ngIf="userid==0">  
+                      <li><a [routerLink]="['/login']">My Address</a></li> 
+                      </ng-container>
+               <ng-container *ngIf="userid!=0">         
+              <li><a [routerLink]="['/myaccount']" [queryParams]="{'id':3}">My Personal Info</a></li>
+              </ng-container>
+              <ng-container *ngIf="userid==0">         
+               <li><a [routerLink]="['/login']" >My Personal Info</a></li>
+             </ng-container>
+          </ul>
+          </div>
+          <div class="information col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+             <h4 class="font_size">Information</h4>
+              <ul class="list-unstyled clear-margins">
+          <!-- <li *ngFor="let informationtname of Information">
+              <a>{{informationtname.name}}</a>
+          </li> -->
+          
+           <li><a (click)="Gotoproduct(1)">Beer</a></li>
+           <li><a (click)="Gotoproduct(2)">Liquor</a></li>
+           <li><a (click)="Gotoproduct(3)">Wine</a></li> 
+           <li><a (click)="Gotoproduct(4)">Mixers & More</a></li>
+           <li><a [routerLink]="['/']">Deals</a></li>
+           <li><a [routerLink]="['/']">New Products</a></li>
+           <li><a [routerLink]="['/']">Best Sellers</a></li> 
+           <li><a [routerLink]="['/']">Our Stores</a></li> 
+          </ul>
+          </div>
+          <!-- widgets column left end -->
+
+
+          <div class="about col-lg-2 col-md-2 col-sm-2 col-xs-6 item_img">
+                  <h4 class="font_size">About</h4>
+              <ul class="list-unstyled clear-margins">
+          <!-- <li *ngFor="let about of About"> <a>{{about.name}}</a></li> -->
+          <li><a [routerLink]="['/']">Deals</a></li>
+          <li><a [routerLink]="['/']">New Products</a></li> 
+          </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img">
+                  <h3 class="Subscribe">Subscribe Newsletter</h3>
+              <p class="newslatter">Enter your email address for our mailing list to keep yourself updated</p>
+              <div class="input-group subscribe">
+                  <input type="text" class="form-control" id="myid" placeholder="ENTER EMAIL ADDRESS ">
+                  <!-- <div class="input-group-append"> -->
+                    <button type="button" class="btn btn-primaray">
+                        <img src="assets/Images/assets/send.png">
+                      </button>
+                  <!-- </div> -->
+                </div>
+                <div class="cards">
+                        <ul>
+                              <li> <img src="assets/Images/assets/paypal.png"></li>
+                               <li><img src="assets/Images/assets/mastercard.png"></li>
+                               <li> <img src="assets/Images/assets/visa.png"></li>
+                               <li><img src="assets/Images/assets/disocver.png"></li>
+                        </ul> 
+                    <!-- <img src="assets/Images/paypal.png"> -->
+                </div>
+          </div>
+          <div>
+          <a class="scrollToTop">
+              <i class="fa fa-arrow-up" aria-hidden="true"></i>
+          </a>
+      </div>
+      </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="container">
+      <div class="row">
+              <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text_center">
+              <div class="copyright">
+                  <p class="made_with">Made With 
+                      <i class="fa fa-heart" aria-hidden="true"></i> 
+                      &
+                      <img class="beer" src="assets/Images/assets/drink.png">  
+                       <span class="allrights"> © 2018, All rights reserved</span>
+                      </p>
+                 
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-lg-4">
+              <ul class="social-network social-circle">
+                  
+                  <li>
+                      <a href="#" class="icoFacebook" title="Facebook">
+                              <img src="assets/Images/assets/facebook.png">
+                                 <!-- <i class="fa fa-facebook"></i> -->
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" class="icoTwitter" title="Twitter">
+                          <!-- <i class="fa fa-twitter"></i> -->
+                          <img src="assets/Images/assets/twitter.png">
+                      </a>
+                  </li>
+                  <li>
+                          <a href="#" class="icoLinkedin" title="Linkedin">
+                              <!-- <i class="fa fa-linkedin"></i> -->
+                              <img src="assets/Images/assets/linkedin.png">
+                          </a>
+                      </li>
+                  <li>
+                      <a href="#" class="youtube" title="Youtube">
+                              <!-- <i class="fa fa-youtube" aria-hidden="true"></i> -->
+                              <img src="assets/Images/assets/youtube.png">
+                          </a>
+                  </li>
+                 
+                      <li>
+                          <a href="#" class="instagram" title="instagram">
+                          <!-- <i class="fa fa-instagram" aria-hidden="true"></i> -->
+                          <img src="assets/Images/assets/Insta.png">
+                      </a>
+                      </li>
+              </ul>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              <div class="design text_center">
+                  <a href="#">PoweredBy </a>
+                  <img src="assets/Images/assets/powered-by.png" alt="Battlecapse" class="first_imge">
+              </div>
+
+          </div>
+
+      </div>
+
+  </div>
+</div>

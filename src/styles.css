@@ -1,0 +1,610 @@
+/* You can add global styles to this file, and also import other style files */
+/* body{
+    font-family: 'Poppins', sans-serif !important;
+   } */
+
+
+   h1,h2,h3,h4,h5,h6{
+    font-family: poppinsbold;
+   }
+
+   .nav>li>a:hover, .nav>li>a:focus{
+       background-color: transparent !important;
+       border:none !important;
+       outline: none;
+   }
+.Search_div {
+    margin: 15px 0px 40px 0;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0px;
+    overflow: hidden;
+}
+.Search_div input{
+     width: 50%;
+    height: 21px;
+    padding-left: 12px;
+    border: none;
+    float: left;
+    border-left: 5px solid #ec1c24;
+    font-family:poppinsbold;
+    font-size: 20px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919;
+   
+}
+.Search_div input::placeholder{
+    font-family:poppinsbold;
+    font-size: 20px;
+    /* font-weight: 600; */
+    color: #191919;
+}
+.Search_div input:focus{
+    box-shadow: none;
+    outline: none;
+}
+
+ol.breadcrumb{
+    float: right;
+    margin: 0;
+    background-color: transparent;
+    font-weight: 500;
+    padding: 0px 15px 15px;
+}
+.breadcrumb li a{
+font-family: poppinsregular;
+  font-size: 10.6px;
+  font-style: normal;
+  font-stretch: normal;
+  /* line-height: 5.17; */
+  letter-spacing: normal;
+  text-align: right;
+  color: #555555;  
+  text-transform: uppercase;
+}
+
+ #menu {
+    background: #fcfcfc;
+    line-height: 38px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 999 !important;
+    border-radius: 0;
+    }
+ 
+    .fixed {
+    position: fixed;
+    background: #ec1c24 !important;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    transition: 0.5s;
+    }
+    .fixed ul{
+    margin-top: 6px;
+    }
+    nav.fixed ul li a{
+    color: #fff;
+    }
+  
+    /* .fixed .input-group button{
+        border: 1px solid #d0d0d0 !important;
+    } */
+    .text_transform {
+        margin-top: 5px; 
+        font-family:poppinsregular;
+        font-size: 12.4px;
+        font-stretch: normal;
+        line-height: 4.43;
+        letter-spacing: normal;
+        text-align: left;
+        color: #888888;
+        text-transform: uppercase;
+
+    }
+
+/* about and landing page */
+.carousel-inner > item {
+    height: 60vh;
+    overflow: hidden;
+}
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    /* width: 100%;
+    margin: auto;
+    max-height: 450px;
+    height: 100%; */
+    min-height: 450px;
+    /* height: 78vh; */
+    height: auto;
+    width:100%;
+}
+.font_size{
+    /* opacity: 0.5; */
+    font-family: poppinsbold;
+    font-size: 15.6px;
+    font-stretch: normal;
+    /* line-height: 3.75; */
+    letter-spacing: normal;
+    text-transform: uppercase;
+    text-align: left;
+    color: rgba(51, 51, 51, 0.5);
+}
+.second_content .rating_star i{
+color: #d4d6da;
+}
+.second_content .rating_star span.first,.second_content .rating_star span.reviews{
+    /* margin-left: 25px; */
+    font-family: montserratregular;
+    font-size: 14.4px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c2c4ca;
+}
+.information address{
+word-wrap: break-word;
+}
+.font_family_Montserrat_Bold{
+font-family: Montserrat-Bold !important;
+color: rgba(255,255,255,255) !important;
+}
+.font_family_Montserrat_Bold h4{
+    font-family:montserratbold;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: 1.22;
+    /* letter-spacing: 1.4px; */
+    text-align: center;
+    color: #ffffff;
+}
+
+.font_family_Montserrat_Bold h2{
+    font-family: montserratbold;
+    font-size: 36px;
+    font-stretch: normal;
+    line-height: 1.11;
+    /* letter-spacing: 1.8px; */
+    text-align: center;
+    color: #ffffff;
+}
+
+.Searchrelated_div{
+    /* margin: 15px 0px 40px 0; 
+    border-bottom: 1px solid #d7d7d7;
+    */
+    border-radius: 0px;
+    overflow: hidden;   
+    
+}
+.Searchrelated_div h4{
+    width: 50%;
+    height: 21px;
+    padding-left: 12px;
+    border: none;
+    float: left;
+    border-left: 5px solid #ec1c24;
+    font-family: poppinsbold;
+    font-size: 30px;
+    font-stretch: normal;
+    /* line-height: 2.93; */
+    letter-spacing: normal;
+    text-align: left;
+    color: #191919;
+}
+section.bgr_img{
+    background-image: url("assets/Images/assets/download-bg.png");
+    background-repeat: no-repeat;
+    height: 300px;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0 10px;
+    background-size: cover;
+}
+.display_center {
+    transform: translateY(20%);
+    text-align: center;
+}
+.img_div{
+    margin-bottom: 20px;
+    text-align: center;
+    height: 300px;
+}
+table tr td .img_div{
+    padding: 11px;
+    /* margin: 35px 0px 0 0 !important;  */
+    height: 80px;
+   }
+.margin_bottom{
+    border: 2px solid #d7d7d7;
+    min-height: 60%;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    height: 60%;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    padding-top: 5px;
+}
+.margin_bottom:hover{
+    width:100%;
+}
+.margin_bottom .firimg{
+    width: 30px;
+    margin-right: 20px; 
+    cursor: pointer;
+    /* position: relative;
+    left: 7px; */
+}
+.margin_bottom .third_img{
+    width: 30px;
+    margin-left: 20px; 
+    cursor: pointer;
+    /* position: relative;
+    left: 40px;   */
+}
+.margin_bottom img.second_img {
+    width: auto;
+    max-width: 35%;
+    height: 160px !important;
+    cursor: pointer;
+    /* position: relative;
+    left: 25px; */
+}
+
+
+.gallery{
+    position: relative;
+    display: block;
+    max-height: 152px;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 5px;
+}
+.gallery .main_img {
+    min-width: 250px;
+    display: block;
+    margin: auto;
+    height: 140px;
+    /* width: auto; */
+    width:100%;
+}
+.checked{
+    color: #ec1c24!important;
+}
+
+.second_content{
+    border: 1px solid #d7d7d7;
+    border-top: none;
+    text-align: left;
+    padding: 10px;
+    min-height: 40%;
+    height: 40%;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+}
+.second_content p.product_size{
+    /* border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    font-size: 9px; */
+    font-family: montserratbold;
+    font-size: 9.6px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262628;
+}
+.second_content p.price{
+    font-family:montserratbold;
+    font-size: 18px;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c42629;
+    margin: 0;
+    
+}
+.second_content h4,.second_content h5{
+    font-family:montserratbold;
+    font-size: 12px;
+    /* font-weight: bold; */
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #262628;
+    margin: 0;
+    padding:5px 0;
+}
+
+.breadcrumb>li.breadcrumb-item a{
+    cursor: pointer !important;
+    
+}
+.breadcrumb>li.breadcrumb-item a:hover{
+    text-decoration: none;
+}
+
+.carousel{
+    padding-bottom: 30px;
+}
+nav .navbar-nav ul li a{
+    padding: 10px 10px;
+}
+@media screen and (min-width:768px) and (max-width:1024px){
+    nav .navbar-nav ul li a{
+        padding: 10px 10px;
+    }
+
+}
+
+/* @media only screen and (min-width: 320px) and (max-width: 568px) {
+   .thumbnail .caption p{
+       font-size: 8px;
+   } 
+
+   table tr td .img_div{
+    padding: 11px;
+    margin: 35px 0px 0 0 !important; 
+   }
+   table tr td .img_div img{
+       height: 40px !important;
+   }
+   table tr td .Product_price,table tr td .you_save,table tr td .total_price{
+       font-size: 10px !important;
+   }
+
+} */
+@media screen and (max-width: 767px) {
+
+    ul.float_right li:first-child{
+        margin-right: 0px !important;
+    }
+    ul.float_right li span{
+        font-size: 10px;
+    }
+    table tr th,table tr td {
+        font-size: 10px !important;
+    }
+    table tr td .Product_price,table tr td .you_save,table tr td .total_price{
+        font-size: 8px !important;
+        font-weight: bold;
+    }
+    .gallery .main_img {
+        min-width: 250px;
+        display: block;
+        margin: auto;
+        height: 140px;
+        /* width: auto; */
+        width:100%;
+    }
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+        min-height: 150px;
+        height: 25vh;
+        width: 100%;
+    }
+    
+    /* Force table to not be like tables anymore */
+    #no-more-tables table, #no-more-tables thead, #no-more-tables tbody, #no-more-tables th, #no-more-tables td, #no-more-tables tr {
+        display: block;
+    }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        #no-more-tables thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    #no-more-tables tr {
+        border: 1px solid #ccc;
+    }
+
+    #no-more-tables td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+        #no-more-tables td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+        }
+
+    table.res_table td:before {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+     /* .gallery .main_img{
+        width:100%;
+         height: 50px; 
+    }  */
+    /* .gallery .main_img {
+        max-width: 250px;
+        display: block;
+        margin: auto;
+        height: 140px;
+        width: auto;
+    } */
+  
+   
+    .bgr_img .display_center h4{
+        font-family: montserratbold;
+  font-size: 18px;
+  font-stretch: normal;
+  line-height: 1.22;
+  /* letter-spacing: 1.4px; */
+  text-align: center;
+  color: #ffffff;
+    } 
+    .display_center h2.download_app{
+  font-family: montserratbold;
+  font-size: 36px;
+  font-stretch: normal;
+  line-height: 1.11;
+  /* letter-spacing: 1.8px; */
+  text-align: center;
+  color: #ffffff;
+    }
+    .display_center {
+       text-align: center;
+    }
+
+    .img_div{
+        margin-right: 10px;
+    }
+    .Product_name h5,table.res_table tr thead th{
+        font-size: 7px !important;
+    }
+    ul.float_right {
+        float: none;
+        padding-left: 0px;
+    }
+   
+   
+    nav ul.navbar-nav{
+        text-align: center;
+    }
+    .footer .footer_image img{
+        width: auto !important;
+      }
+   
+      .Search_div{
+        margin: 10px 0px 0px 0;   
+        padding-bottom: 10px;
+      }
+
+      ol.breadcrumb{
+          float: left;
+          padding-left: 0;
+      }
+}
+
+@media screen and (min-width:768px) and (max-width:1024px){
+ }
+
+ .multiselect-dropdown .dropdown-btn{
+    border: none !important;
+    padding: 12px 12px !important;
+ }
+ .multiselect-dropdown .dropdown-btn .dropdown-down{
+     display: none !important;
+ }
+ .multiselect-dropdown .dropdown-btn .dropdown-up{
+     display: none !important;
+ }
+
+ .multiselect-dropdown .dropdown-btn{
+    font-family: poppinsbold;
+    font-size: 14px;
+    color: #222222;
+    text-transform: uppercase;
+ }
+ .multiselect-dropdown .dropdown-btn:focus{
+     outline: none;
+ }
+
+ .select_atag {
+    padding: 0;
+}
+.select_atag > i{
+    margin-top: -30px !important;
+}
+.sidebar-menu > li > a.select_atag{
+    padding: 0px 5px 0px 15px !important;
+}
+.margin_bottom img.offericon{
+    float: right;
+    margin: 0px;
+  
+}
+
+.spinner img{
+ position: relative !important;
+ top: 30%;
+ /* transform: translateY(50%); */
+ width: auto;
+ height: 20%;
+ vertical-align: middle;
+ margin: 0 auto !important;
+ text-align: center;
+}
+
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before{
+    background: #ec1c24 !important;  
+}
+
+.multiselect-item-checkbox input[type=checkbox] + div:before{
+    border: 2px solid #ec1c24 !important;
+}
+
+.multiselect-dropdown .dropdown-btn .selected-item {
+    border: 1px solid #ec1c24 !important;
+    background: #ec1c24 !important;
+}
+
+/* .multiselect-dropdown .dropdown-btn{
+    font-size: 10px !important;
+    font-family: poppinsbold !important;
+    text-transform: capitalize !important;
+} */
+
+.sidebar-menu ul.name_left li{
+    margin-left:30px;
+    line-height: 2.5;
+}
+
+.offericon{
+    position: absolute;
+     right: 16px;
+}
+.strike_text{
+    text-decoration: line-through;
+    font-family:montserratbold;
+    font-size: 18px !important;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #c2c4ca;
+    float: left;
+    padding-right: 35px;
+   
+}
+
+.form-control:focus {
+    border-color: #ccc;
+    outline: 0;
+    box-shadow:none !important;
+} 
+
+.sidebar-menu .sidebar-submenu > li > a{
+    color: #ec1c24 !important;   
+}
+
+section.m_bottom{
+    margin-bottom: 30px;
+    overflow: hidden;
+}

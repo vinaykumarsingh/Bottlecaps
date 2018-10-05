@@ -1,0 +1,274 @@
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner>
+
+<div class="container">
+        <div class="row">
+      <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <input type="text" placeholder="Product">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+       <li class="breadcrumb-item active"><a href="#">SearchCategories</a></li>
+       <li class="breadcrumb-item active"><a href="#">Product Details</a></li>
+      </ol>
+       </div>
+       </div>
+      </div>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+                <div class="product_img">
+                    <img class="second_img" src='{{productdetaile.ProductImg}}' />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+                <div class="product_content">
+                    <h3>{{productdetaile.ProductName}}</h3>
+                    <div>
+                        <ul>
+                            <li *ngIf="productget.Region">
+                                <a> {{productget.Region}}
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li *ngIf="productget.Country">
+                                <a>{{productget.Country}}
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="customers_review">
+                        <span>{{productdetaile.PriceDisplay}}</span>
+                        <ul class="float_right">
+                            <li>
+                                <ng-container *ngFor="let review of listreview">
+                            <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <=review.ReviewRating, 'fa-star-half-o':star+0.5 == review.ReviewRating}"></i>
+                        </ng-container>
+                        </li>
+                           
+                        </ul>
+                    </div>
+                    <div class="padding_bottom">
+                        <span class="size_bottle">{{productdetaile.Size}}</span>
+                        <span class="float_right">SKU:{{productdetaile.SKU}}</span>
+                    </div>
+                    <p class="font_size">
+                       {{productdescription}}
+                    </p>
+                </div>
+                 <!-- <h4 class="size1">Size</h4>  -->
+                <div class="row">
+                    <div class="size">
+                       <!-- <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                            <select>
+                                <option>Default Sorting</option>
+                                <option>1</option>
+                               
+                            </select>
+                        </div>  -->
+                        <div class="margin_top col-md-6 col-sm-6 col-lg-6 col-xs-6">
+                            <button (click)="decrement()" class="dec_circle">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                            <span class="value">{{counter}}</span>
+                            <button (click)="increment()" class="dec_circle">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-default addtocart" (click)="addtocart(productdetaile.PID)" >Add to Cart</button>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+          
+            <ng-container *ngIf="relatedproductsList!=''">
+            <div class="related_product">
+                   
+                <div class="Searchrelated_div col-md-10 col-sm-10 col-lg-10 col-xs-12">
+                    <!-- <input type="text" placeholder="Related Product"> -->
+                    <h4>Related Product</h4>
+                </div>
+
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-12">
+                    <h4 class="view_more"><span  (click)="viewmore(8)"> View More
+                        <span class="arrow_right">
+                                <img src="assets/Images/assets/viewmore.png">   
+                        </span>
+                    </span>
+                    </h4>
+                </div>
+            </div>
+        </ng-container>
+            <div class="Main_bottlesection">
+      
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 item_img" *ngFor="let product of relatedproductsList">
+                        <div class="img_div">
+
+                                <ng-container *ngIf="product.OfferType=='CLUB'">
+                                    <img class="offericon" src='{{product.OfferIcon}}'>
+                                  </ng-container>
+                                  <ng-container *ngIf="product.OfferType=='SALE'">
+                                   <img class="offericon" src='{{product.OfferIcon}}'>
+                                 </ng-container>
+                                
+                                 <ng-container *ngIf="product.OfferType==''">
+                                   <img class="offericon" src='{{product.OfferIcon}}'>
+                                 </ng-container>
+                                 
+                              <div class="margin_bottom">
+                                <!-- <img class="firimg" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png" /> -->
+                                <ng-container *ngIf="product.IsFavorite==false">
+                                   <img class="firimg" (click)="favoriteadd(product.PID,true)" src="assets/Images/assets/favorites.png"/> 
+                                  </ng-container>
+                                   <ng-container *ngIf="product.IsFavorite==true">
+                                <img class="firimg"  (click)="favoriteadd(product.PID,false)" src="assets/Images/assets/favorites-active.png"/> 
+                              </ng-container >
+                                <img class="second_img" (click)="ProductClick(product.PID)" src='{{product.ProductImg}}' />
+                                <!-- <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" /> -->
+                              
+                                <ng-container *ngIf="product.InCart==0">
+                                <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" />
+                              </ng-container>
+                              <ng-container *ngIf="product.InCart!=0">
+                                  <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart-active.png" />
+                                </ng-container>
+              
+                              </div>
+                              <div class="second_content" (click)="ProductClick(product.PID)">
+                                <div class="">
+                                    <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
+                                        <p class="price">{{product.PriceDisplay}}</p>
+                                        </ng-container>
+                                        <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
+                                            <h5>
+                                                <p class="strike_text">{{product.PriceDisplay}}</p>
+                                              <p class="price">{{product.OfferPriceDisplay}}</p>
+                                             </h5>
+                                      </ng-container>
+                                  <h5>{{product.ProductName}}</h5>
+                                    <!-- <p> {{product.Size}}</p> -->
+                                  <p class="rating_star">
+                                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
+                                    <span class="first">{{product.ReviewCount}} reviews</span>
+                                    <span class="reviews"> </span>
+                                  </p>
+              
+                                </div>
+                              </div>
+                            </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="total_border" *ngFor="let review of listreview">
+            <h4 class="review_title">{{review.ReviewTitle}}</h4>
+             <div class="reviews">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <!-- <div class="circle_bg"></div> -->
+                    <img src="{{review.UserImage}}">
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <div class="border">
+                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <span class="username">{{review.UserName}}</span> -<span class="review_date"> {{review.Reviewdate}}</span></div>
+                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)"></i>
+                          
+                        </div>
+                        <p class="word_break">{{review.ReviewDescription}}
+                        </p>
+                    </div>
+                </div> 
+            </div>
+            <!-- <div class="reviews">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <div class="circle_bg"></div>
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+                    <div class="border">
+                        <div class="name_date col-lg-6 col-md-6 col-sm-6 col-xs-12">Cobus Better - June 7,2018</div>
+                        <div class="star_right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star last" aria-hidden="true"></i>
+                        </div>
+                        <p class="word_break">loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm loremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsmloremipsm
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="add_review common_width">
+                <h4>Add A Review</h4>
+                <p>Your email address wii not be published. Required Field is marked
+                    <span class="mandatory">*</span>
+                </p>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 your_rating" ><h5>Your Ratings</h5></div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-sm-9 col-xs-12 star_right">
+                
+                    <i class="fa fa-star" *ngFor="let star of [1,2,3,4,5]" [ngClass]="{'checked':star<=val}" (click)="changeStarCount(star)"></i>           
+
+                </div>
+
+                <form [formGroup]="userreview" class="common_width" (ngSubmit)="riview">
+                    <div class="form-group row">
+                        <label class="col-lg-2 col-md-2 col-sm-2 col-xs-12 col-form-label">Your Reviews
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                        <textarea class="form-control" rows="3" formControlName="review"></textarea>
+                    </div>
+                </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Name
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <input type="text"formControlName="name" class="form-control" id="inputPassword" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Password
+                            <span class="mandatory">*</span>
+                        </label>
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                            <input type="text" formControlName="password" class="form-control" id="inputPassword" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                   <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+                            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                                <button class="btn reviewsubmit" type="submit" (click)="custemorereview(review.ReviewDescription,review.ReviewRating,review.ReviewTitle)">Submit</button>
+                            </div>
+                        </div>
+                </form>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</section>

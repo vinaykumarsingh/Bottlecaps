@@ -1,0 +1,63 @@
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner>
+<div class="container">
+    <div class="row">
+
+<div class="Main_bottlesection">
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6">
+  <div class="row">
+      <div *ngFor="let product of favlist" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 slideInUP wow delay-05s  animated item_img circle">
+      
+         <div class="img_div" >
+            <div class="margin_bottom">
+                <!-- <img  class="firimg" id="myImage" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> -->
+             
+                <ng-container *ngIf="product.IsFavorite==false">
+                    <img class="firimg" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> 
+                   </ng-container>
+                    <ng-container *ngIf="product.IsFavorite==true">
+                 <img class="firimg"  (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites-active.png"/> 
+               </ng-container >
+             
+                <img class="second_img" (click)="Productgetdetailes(product.PID)" src='{{product.ProductImg}}'/>
+                <!-- <img  class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png"/> -->
+                <ng-container *ngIf="product.InCart==0">
+                    <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" />
+                  </ng-container>
+                  <ng-container *ngIf="product.InCart!=0">
+                      <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart-active.png" />
+                    </ng-container>
+            </div>
+            <div class="second_content" (click)="Productgetdetailes(product.PID)">
+                    <div class="">
+                        <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
+                            <p class="price">{{product.PriceDisplay}}</p>
+                            </ng-container>
+                            <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
+                           <h5>
+                              <p class="strike_text">{{product.PriceDisplay}}</p>
+                            <p class="price">{{product.OfferPriceDisplay}}</p>
+                           </h5>
+                          </ng-container>
+                            <h5 class="productname">{{product.ProductName}}</h5>
+                         
+                           <p class="product_size">
+                             <span>{{unitesize.UnitSize}}</span>
+                             </p>
+
+                            <p class="rating_star">
+                                <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
+                                <span class="first">{{product.ReviewCount}}</span>
+                                <span class="reviews">reviews</span>
+                            </p>
+     
+                    </div>
+            </div>
+          </div>
+        
+       
+      </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

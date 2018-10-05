@@ -1,0 +1,332 @@
+<header>
+
+    <div class="container">
+        <div class="header_div">
+            <div class="row">
+                <div class="col-md-4 col-lg-6 col-sm-4 col-xs-12">
+                    <a class="navbar-brand">
+                        <img src="assets/Images/assets/logo.png" [routerLink]="['/']" alt="Battlecapse" height="42" width="42">
+                    </a>
+                </div>
+
+                <div class="col-md-8 col-lg-6 col-sm-8 col-xs-12 mobile_none">
+                    <!-- <ul class="float_right"> -->
+
+                    <!-- <li class="text_small" >
+                      <div class="header_icon">
+                      <img src="assets/Images/assets/profile.png" alt="Battlecapse">
+                  </div>
+                  <a (click)="userlogin()" class="username">{{username}}</a>
+                    </li>  -->
+                    <ul class="nav navbar-nav float_right">
+                        <li class="dropdown text_small">
+                            <div class="header_icon">
+                                <img src="assets/Images/assets/profile.png" alt="Battlecapse">
+                            </div>
+                            <a class="dropdown-toggle username" data-toggle="dropdown">{{username}}</a>
+                            <ul class="user-menu dropdown-menu">
+                                <li [routerLink]="['/myorders']">
+                                    <a>
+                                        <img class="beer" src="assets/Images/assets/Orders.png"> My Orders
+                                    </a>
+
+                                </li>
+                                <li [routerLink]="['/myaccount']">
+                                    <a>
+                                        <img class="beer" src="assets/Images/assets/account.png"> My Account
+                                    </a>
+                                    <!-- <ul class="sidebar-submenu" style="display: none;">
+                                        <li>
+                                            <a>Profil Information</a>
+                                        </li>
+                                        <li>
+                                            <a>Manage Addresses</a>
+                                        </li>
+                                        <li>
+                                            <a>Payment methods</a>
+                                        </li>
+                                    </ul> -->
+                                </li>
+
+                                <li class="star_color" [routerLink]="['/myaccount']">
+                                    <a>
+                                        <i aria-hidden="true" class="fa fa-star"></i>
+                                        Favorites
+                                    </a>
+
+                                </li>
+
+                                <li class="">
+                                    <a (click)="UserLogout()">
+                                        <img class="beer" src="assets/Images/assets/logout.png"> Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li [routerLink]="['/cart']">
+                            <div class="header_icon">
+                                <img src="assets/Images/assets/cart.png" alt="Battlecapse">
+                            </div>
+                            <a>Shopping Cart</a>
+                            <span class="cart">{{custermerinfo}} Item (s)</span>
+
+                        </li>
+                    </ul>
+
+
+
+
+
+                    <!-- </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar bg_color default" id="menu">
+        <div class="container">
+            <div class="row">
+
+                <div class="navbar-header">
+                    <div class="input-group display_none col-md-12 col-lg-12 col-sm-8 col-xs-9">
+                        <input type="text" class="form-control search" id="myId" placeholder="Search..">
+
+                        <button type="button" class="btn btn-primaray">
+                            <img src="assets/Images/assets/search.png">
+                        </button>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-sm-8 col-xs-3">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <a class="navbar-brand logo_logo" href="#">
+                        <img alt="Battlecapse" height="42" width="42" src="assets/Images/assets/logo.png">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <!-- <ul class="nav navbar-nav main_ul">
+                      <li (ngClass)="active ? 'active': 'unactive'" *ngFor="let link of mainlinks" [routerLink]="link.urlpath"><a >{{link.linkname}}</a></li>
+                      </ul> -->
+                    <!-- <ul class="nav navbar-nav" id="main_ul"> 
+          <li [routerLink]="['/']"><a class="active">Home</a></li>
+          <li [routerLink]="['/aboutus']"><a>About</a></li>
+          <li [routerLink]="['/']"><a>Feature Products</a></li> 
+          <li><a (click)="onclick(1)">Beer</a></li>
+          <li><a (click)="onclick(2)">Liquor</a></li>
+          <li><a (click)="onclick(3)">Wine</a></li>
+          <li><a (click)="onclick(4)"> Mixers & More</a></li>
+          <li [routerLink]="['/recipes']"><a>Recipes</a></li>
+       </ul> -->
+
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                        <div class="collapse navbar-collapse js-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li [routerLink]="['/']">
+                                    <a class="active">Home</a>
+                                </li>
+                                <li [routerLink]="['/about']">
+                                    <a>About</a>
+                                </li>
+                                <li [routerLink]="['/']">
+                                    <a>Feature Products</a>
+                                </li>
+
+                                <li class="dropdown mega-dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"> Beer </a>
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                     <!-- <li class="dropdown-header">TYPE</li>
+                                   <li>
+                                    <input type="checkbox">   
+                                   <a>All</a>
+                                   </li>
+                                   <li> <input type="checkbox"> Dynamic Data Here</li> -->
+                                                <h3 class="first">Basic</h3>
+                                                <p-checkbox name="beerType" value="ALL" label="ALL" [(ngModel)]="beerSelectedType" inputId="beerALL"></p-checkbox>
+
+                                            </ul>
+                                            <ul class="filters_data">
+                                                <li *ngFor="let listType of storeGetHomeData?.StoreFilters[0].ListType">
+                                                    <p-checkbox name="listType.TypeName" value="listType.TypeName" label={{listType.TypeName}} [(ngModel)]="beerSelectedType" inputId="listType.TypeId"></p-checkbox>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">SIZE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">PRICE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown mega-dropdown">
+                                    <a class="dropdown-toggle" (click)="onclick(2)" data-toggle="dropdown">Liquor</a>
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">TYPE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">SIZE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">PRICE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+
+                                </li>
+                                <li class="dropdown mega-dropdown">
+                                    <a class="dropdown-toggle" (click)="onclick(3)" data-toggle="dropdown">Wine</a>
+                                    <ul class="dropdown-menu mega-dropdown-menu">
+
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">TYPE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">SIZE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+                                        <li class="col-lg-4 col-md-4 col-sm-4">
+                                            <ul class="filters">
+                                                <li class="dropdown-header">PRICE</li>
+                                                <li>
+                                                    <input type="checkbox">
+                                                    <a>All</a>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox"> Dynamic Data Here</li>
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a (click)="onclick(4)"> Mixers & More</a>
+                                </li>
+                                <li [routerLink]="['/recipes']">
+                                    <a>Recipes</a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right mobile_none">
+                                <li>
+                                    <form [formGroup]=searchform (ngSubmit)="searchcproduct()">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" formControlName="search" placeholder="Search..">
+
+                                            <button type="submit" class="btn btn-primaray">
+                                                <img src="assets/Images/assets/search.png">
+                                            </button>
+                                            <!-- </div> -->
+                                        </div>
+                                    </form>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!-- <ul class="float_right">
+          <li class="display_mobile">
+              <img src="assets/Images/assets/profile.png" alt="Battlecapse">
+           <a (click)="userlogin()"><span>{{username}}</span></a> 
+            <h6 #logout style="display: none">LogOut</h6> 
+          </li>
+          <li class="display_mobile" [routerLink]="['/cart']">
+            <img src="assets/Images/assets/cart.png" alt="Battlecapse" >
+            <a>Shopping Cart </a>
+            <span>{{custermerinfo}} Item (s)</span>
+          </li>
+        </ul> -->
+                    <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12 padding_left"> -->
+                    <!-- <ul class="nav navbar-nav navbar-right mobile_none">
+            <li> 
+                <form [formGroup]=searchform (ngSubmit)="searchcproduct()">
+                    <div class="input-group">
+                <input type="text" class="form-control"  formControlName="search" placeholder="Search..">
+
+                  <button type="submit" class="btn btn-primaray">
+                      <img src="assets/Images/assets/search.png">
+                  </button>
+          
+              </div>
+                     </form>
+            </li>
+           
+          </ul> -->
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+</header>
+

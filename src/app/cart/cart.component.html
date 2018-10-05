@@ -1,0 +1,104 @@
+<style>
+  @media only screen and (max-width: 800px) {
+
+table.res_table td:nth-of-type(1):before { content: "Product Details"; }
+table.res_table td:nth-of-type(2):before { content: "Product Price"; }
+table.res_table td:nth-of-type(3):before { content: "Quantity"; }
+table.res_table td:nth-of-type(4):before { content: "Total Price"; }
+
+}     
+    </style>
+    
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner>
+
+<div class="container">
+    <div class="row">
+  <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+    <input type="text" placeholder="Cart">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a (click)="gottoHome()">Home</a></li>
+   <li class="breadcrumb-item active"><a>Cart</a></li>
+  </ol>
+   </div>
+   </div>
+  </div>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div id="no-more-tables" class="col-md-12 col-sm-12 col-lg-12 col-xs-12 slideInUP wow delay-05s  animated">
+        <table class="table table-bordered res_table">
+          <thead>
+            <tr>
+              <th>Product Details</th>
+              <th>Product Price</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartdetail of cartdetails;let i=index">
+              <td>
+                <div class="img_div">
+                  <img class="second_img" src='{{cartdetail.ProductImage}}' />
+                </div>
+                <div class="Product_name">
+                  <h5>{{cartdetail.ProductName}}</h5>
+                  <!-- <ul class="float_right">
+                    <li>
+                      <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= cartdetail.Rating, 'fa-star-half-o':star+0.5 == cartdetail.Rating}"></i>
+                    </li>
+                </ul> -->
+                <span class="font_size">{{cartdetail.UnitSize}}</span>
+                </div>
+
+              </td>
+              <td>
+                <div>
+                  <h5 class="Product_price">{{cartdetail.Price}}</h5>
+                  <div><h6 class="you_save">You save 3$</h6></div>
+                </div>
+
+              </td>
+              <td>
+                  <div class="margin_top" >
+                      <button (click)="decrement(i,cartdetail.Quantity,cartdetail.CartItemId,cartdetail.CartId,cartdetail.PID)" class="dec_circle">
+                          <i class="fa fa-minus" aria-hidden="true"></i>
+                      </button>
+                      <span class="value" >{{cartdetail.QuantityOrdered}}</span>
+                      <button (click)="increment(i,cartdetail.Quantity,cartdetail.CartItemId,cartdetail.CartId,cartdetail.PID)" class="dec_circle">
+                          <i class="fa fa-plus" aria-hidden="true"></i>
+                      </button>
+                  </div> 
+                  <!-- <select #selectedvalue (change)="onChange(selectedvalue)" class="selectBox">
+                      <option *ngFor="let page of quantityorderd" [value]="page">
+                        {{page}}
+                      </option>
+                    </select> -->
+              </td>
+              <td>
+                <div>
+                  <span class="total_price">${{cartdetail.ItemTotal}} </span>
+                  <button class="bg_black">
+                      <img (click)= "removeItem(cartdetail.PI,i)" src="assets/Images/assets/cancel.png">
+                </button>
+                </div>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+        <div class="btn_right">
+          <!-- <button class="btn btn-default" (click)="checkoutClick()">Pickup</button> -->
+          <button class="btn btn-default" (click)="pickup()">Pickup</button>
+          <button class="btn btn-default" (click)="delivery()">Delivery</button>
+         
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</section>

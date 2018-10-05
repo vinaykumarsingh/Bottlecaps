@@ -1,0 +1,196 @@
+
+<style>
+  @media only screen and (max-width: 800px) {
+
+table.res_table td:nth-of-type(1):before { content: ""; }
+table.res_table td:nth-of-type(2):before { content: ""; }
+table.res_table td:nth-of-type(3):before { content: ""; }
+table.res_table td:nth-of-type(4):before { content: ""; }
+
+}     
+    </style>
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner>
+<div class="container">
+    <div class="row">
+  <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+    <input type="text" placeholder="My Orders">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a (click)="gotoHome()">Home</a></li>
+   <li class="breadcrumb-item active"><a (click)="gotoaccount()">Account</a></li>
+   <li class="breadcrumb-item active"><a >Myorders</a></li>
+  </ol>
+   </div>
+   </div>
+  </div>
+<section>
+  <div class="container">
+    <div class="row">
+     
+      <div class=" border_bottom" *ngFor="let myorderdetailes of myorderdetailes">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-12">
+          <h5>
+              <span> 
+                  <img class="status" src="{{myorderdetailes.OrderStatusImage}}">
+                </span>
+                <ng-container *ngIf="myorderdetailes.OrderStatus=='Pending'">
+                <span class="delevary_color" style="color:#ec1c24;">{{myorderdetailes.OrderStatus}}</span>
+              </ng-container>
+              <ng-container *ngIf="myorderdetailes.OrderStatus=='Cancelled'">
+                  <span class="delevary_color" style="color:#ec1c24;">{{myorderdetailes.OrderStatus}}</span>
+                </ng-container> 
+                <ng-container *ngIf="myorderdetailes.OrderStatus=='Scheduled for delivery'">
+                    <span class="delevary_color" style="color:#ff8a00;">{{myorderdetailes.OrderStatus}}</span>
+                  </ng-container>
+                  <ng-container *ngIf="myorderdetailes.OrderStatus=='Completed'">
+                      <span class="delevary_color" style="color:#4dbb3c;">{{myorderdetailes.OrderStatus}}</span>
+                    </ng-container>
+
+              </h5>
+        </div>
+
+        <div class="float_right col-md-6 col-sm-6 col-lg-6 col-xs-12">
+            <ol class="breadcrumb">
+               <li class="breadcrumb-item code"><a>{{myorderdetailes.OrderNo}}</a></li>
+              </ol>
+          </div>
+
+      <div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <table>
+          <tbody >
+          <tr *ngFor="let y of myorderdetailes.ListOrderItem">
+              <td class="width_20">
+                  <div class="img_div" >
+                      <img class="second_img" src='{{y.ProductImage}}' />
+                    </div>
+              </td>
+              <td>
+                <div class="Product_name">
+                  
+                  <h5>{{y.ProductName}}</h5>
+               
+                  <ul>
+                    <li>
+                      <!-- <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= process.Rating, 'fa-star-half-o':star+0.5 == process.Rating}"></i> -->
+                    </li>
+                   
+                  </ul>
+                  <span class="font_size">{{y.UnitSize}}</span>
+                </div>
+              </td>
+              
+              <td>
+                <div>
+                  <h5 class="Product_price">{{y.PriceDisplay}}</h5>
+                  <div>
+                    <ng-container *ngFor="let yousave of myorderdetailes.ListDiscount">
+                    <h6 class="you_save" >{{yousave.DiscountDescription}}</h6>
+                  </ng-container>
+                  </div>
+                </div>
+
+              </td>
+              <td>
+                <div>
+                  <h5 class="Product_price"> {{y.Quantity}}</h5>
+                  <div>
+                    <h6 class="you_save">Quantity </h6>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div>
+                  <span class="total_price"> {{y.FinalItemTotalDisplay}} </span>
+                  <!-- <button class="bg_black">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button> -->
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="width_30">
+            <div class="margin_top_25">
+                    <h5>
+                        <span>
+                            <img src="assets/Images/assets/recipt-date.png">
+                          </span>
+                     <span class="date_time"> {{myorderdetailes.OrderedDate}}</span>
+                    </h5>
+                
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                  
+                <div class="order_total" id="order_total"> 
+       
+                  <h4>
+                    Order Total 
+                    <span class="font_color">{{myorderdetailes.TotalValueDisplay}}</span>
+       
+                    <button class="dec_circle toggle">
+                        <img class="plus" src="assets/Images/assets/expand.png" data-toggle="collapse" [attr.data-target]="'#'+myorderdetailes.OrderId">
+                    </button>
+               
+                  </h4>
+            
+                  <div  class="bill_summary inner" id={{myorderdetailes.OrderId}}>
+                      <h5 class="summary">Summary</h5>
+                    
+                    <table class="text_left">
+                      <tbody>
+                        <tr>  
+                       
+                          <td>Sub Total</td>
+                          <td>{{myorderdetailes.SubTotalDisplay}}</td>
+                     
+                        </tr>
+                        <ng-container *ngFor="let listcharge of myorderdetailes.ListCharge">
+                         <tr>
+                            <ng-container *ngIf="listcharge.ChargeId==1">
+                             <td>Tax</td>
+                             <td>
+                           {{listcharge.ChargeAmountDisplay}}
+                         
+                          </td>
+                        </ng-container>
+                           </tr>
+                         <tr>
+                            <ng-container *ngIf="listcharge.ChargeId==2">
+                          <td>Delivery Free</td>
+                          <td>
+                             
+                            {{listcharge.ChargeAmountDisplay}}
+                         
+                          </td>
+                        </ng-container>
+                        </tr>
+                        <tr>
+                            <ng-container *ngIf="listcharge.ChargeId==3">
+                          <td>Tip</td>
+                          <td>
+                             
+                            {{listcharge.ChargeAmountDisplay}}
+                            
+                          </td>
+                        </ng-container>
+                        </tr>
+                      </ng-container>
+                      </tbody>
+                    </table>
+                  
+                 </div>
+          
+                  </div>
+               
+                </td>
+               </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

@@ -1,0 +1,306 @@
+
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner>
+
+<div class="container">
+    <div class="row">
+      <div class="Search_div col-md-12 col-sm-12 col-lg-12 col-xs-12">
+        <input type="text" placeholder="Search Results">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a (click)="gottoHome()">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a>Search Categories</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  
+  <section class="m_bottom">
+    <div class="container">
+      <div class="row">
+        <!-- <div class= "" *ngFor="let sidebar of landingproduct" >
+               <app-landingproduct ["landingproduct"]=sidebar></app-landingproduct> 
+              </div> -->
+        <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+        
+          <ul class="sidebar-menu">
+            <li>
+              <a>
+                <span>Category Search</span>
+                <i class="fa fa-angle-down pull-right"></i>
+              </a>
+              <ul class="sidebar-submenu name_left">
+                <li>-- Select --</li>
+  
+                <li *ngFor="let storefilter of storefilters" (click)="categoryclick(storefilter.CategoryId)">
+                  <a>{{storefilter.CategoryName}}</a>
+                </li>
+  
+              </ul>
+            </li>
+            
+            <!-- <li *ngIf="categorytype">
+              <a>
+                <span>Type</span>
+                <i class="fa fa-angle-down pull-right"></i>
+              </a>
+              <ul class="sidebar-submenu">
+                <ng-container *ngFor="let storefilter of storefilters">
+                  <ng-container *ngIf="storefilter.CategoryId==this.filterid">
+                    <li *ngFor="let listtype of storefilter.ListType" (click)="producttype(listtype.TypeId)">
+                      <input type="checkbox" class="chk" />
+                   
+                      <a>{{listtype.TypeName}}</a>
+                    </li>
+                  </ng-container>
+                </ng-container>
+              </ul>
+            </li>  -->
+            <ng-container *ngFor="let storefilter of storefilters">
+            <ng-container *ngIf="storefilter.CategoryId==filterid">
+              <li *ngIf="categorytype" class="dropdown-btn" (click)="producttype(listtype.TypeId)">
+                <ng-multiselect-dropdown
+                [placeholder]="'Type'"
+                [data]="storefilter.ListType"
+                [(ngModel)]="selectedtypeItems"
+                [settings]="typedropdownSettings"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)"
+                (onDeSelect)="onItemDeSelect($event)"
+                >
+              </ng-multiselect-dropdown>
+              <a class="select_atag"><i class="fa fa-angle-down pull-right"></i></a>
+               
+            </li>
+            </ng-container>
+            </ng-container>
+  
+            <!-- <ng-container *ngFor="let storefilter of storefilters">
+              <ng-container *ngFor="let listtype of storefilter.ListType">
+                <ng-container *ngIf=" listtype.TypeId=='' || listtype.TypeId==this.filtertypeid ">
+                    -->
+                  <li *ngIf="varietal">
+                      <!-- <li *ngFor="let varietal of listtype.ListVarietal " (click)="listvarietal(varietal.VarietalId)">
+                          <input type="checkbox" [(ngModel)]="varietal.isChecked" />
+                        <a>{{varietal.VarietalName}}</a>
+                      </li> -->
+
+                        <ng-multiselect-dropdown
+                        [placeholder]="'Varietal'"
+                        [data]="v"
+                        [(ngModel)]="selectedvarietalItems"
+                        [settings]="varietaldropdownSettings"
+                        (onSelect)="onItemSelect($event)"
+                        (onSelectAll)="onSelectAll($event)"
+                        (onDeSelect)="onItemDeSelect($event)"
+                        >
+                      </ng-multiselect-dropdown>
+                      <a class="select_atag"><i class="fa fa-angle-down pull-right"></i></a>
+                      </li>
+                 
+                <!-- </ng-container>
+              </ng-container>
+            </ng-container> -->
+          
+            <ng-container *ngFor="let storefilter of storefilters">
+                <ng-container *ngIf="storefilter.ListCountries !=''">
+            <li *ngIf="country">
+              <ng-multiselect-dropdown
+              [placeholder]="'Country'"
+              [data]="storefilter.ListCountries"
+              [(ngModel)]="selectedcountryItems"
+              [settings]="countrydropdownSettings"
+              (onSelect)="onItemSelect($event)"
+              (onSelectAll)="onSelectAll($event)"
+              (onDeSelect)="onItemDeSelect($event)"
+            >
+            </ng-multiselect-dropdown>
+            <a class="select_atag"><i class="fa fa-angle-down pull-right"></i></a>
+            </li>
+            </ng-container>
+            </ng-container>
+  
+         
+                  <li *ngIf="region">
+                    <ng-multiselect-dropdown
+                    [placeholder]="'Region'"
+                    [data]="b"
+                    [(ngModel)]="selectedregionItems"
+                    [settings]="regiondropdownSettings"
+                    (onSelect)="onItemSelect($event)"
+                    (onSelectAll)="onSelectAll($event)"
+                    (onDeSelect)="onItemDeSelect($event)"
+                  >
+                  </ng-multiselect-dropdown>
+                  <a class="select_atag"><i class="fa fa-angle-down pull-right"></i></a>
+                  </li>
+  
+         
+  
+            <li *ngIf="size">
+                <ng-container *ngFor="let storefilter of storefilters">
+                    <ng-container *ngIf="storefilter.CategoryId==filterid">
+              <ng-multiselect-dropdown
+                      [placeholder]="'Size'"
+                      [data]="storefilter.ListSize"
+                      [(ngModel)]="selectedsizeItems"
+                      [settings]="sizedropdownSettings"
+                      (onSelect)="onItemSelect($event)"
+                      (onSelectAll)="onSelectAll($event)"
+                      (onDeSelect)="onItemDeSelect($event)"
+                    >
+                    </ng-multiselect-dropdown>
+                    <a class="select_atag"><i class="fa fa-angle-down pull-right"></i></a>
+                  </ng-container>
+                </ng-container>
+            
+            </li>
+         <!-- <li class="price">
+              <a>
+                <span>Price</span>
+                <i class="fa fa-angle-down pull-right"></i>
+              </a>
+              <ul class="sidebar-submenu">
+              
+                  <li>
+                      <h3>{{rangeValues[0] + ' - ' + rangeValues[1]}}</h3>
+                      <p-slider [(ngModel)]="rangeValues" [style]="{'width':'14em'}" [range]="true"></p-slider>
+                  </li>
+           
+              </ul>
+            </li>   -->
+            
+            <li class="clear_search">
+              <a>
+                <span>Clear Search</span>
+              </a>
+            </li>
+          </ul>
+      
+        </div>
+  
+        <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
+          <div class="row margin_bottom_35">
+  
+            <div class="col-md-6 col-sm-6">
+           
+              <p class="text_transform">
+                Showing 
+                <ng-container *ngIf="totalcount >=10"> 
+                {{pageto}}
+                </ng-container>
+                <ng-container *ngIf="totalcount <=10">
+                  1
+              </ng-container>
+                 -
+                <ng-container *ngIf="totalcount <=10">
+                {{totalcount}}
+              </ng-container>
+  
+              <ng-container *ngIf="totalcount >=10">
+                  {{pagefrom}}
+            </ng-container>
+  
+               of {{totalcount}} Product
+              </p>
+            </div>
+            <!-- <div class="col-md-6 col-sm-6">
+              <div class="select_box">
+            <select #selectedvalue (change)="onChange(selectedvalue)" class="selectBox">
+                  <option *ngFor="let page of pages" [value]="page">
+                    {{page}}
+                  </option>
+                </select>
+               
+              </div>
+            </div> -->
+
+            <div class="col-md-6 col-sm-6">
+              <div class="select_box">
+           
+            <select #selectedvalue (change)="onChange(selectedvalue)" class="selectBox">
+                  <option *ngFor="let page of pages" [value]="page">
+                    {{page}}
+                  </option>
+                </select>
+  
+                <select>
+                    <option>DEFAULT SORTING</option>
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                  </select>
+  
+              </div>
+            </div>
+  
+  
+          </div>
+  
+          <div class="Main_bottlesection">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 item_img" *ngFor="let product of productsList; let i=index">
+                <div class="img_div">
+
+                    <ng-container *ngIf="product.OfferType=='CLUB'">
+                        <img class="offericon" src='{{product.OfferIcon}}'>
+                      </ng-container>
+                      <ng-container *ngIf="product.OfferType=='SALE'">
+                       <img class="offericon" src='{{product.OfferIcon}}'>
+                     </ng-container>
+                    
+                     <ng-container *ngIf="product.OfferType==''">
+                       <img class="offericon" src='{{product.OfferIcon}}'>
+                     </ng-container>
+                     
+                  <div class="margin_bottom">
+                    <!-- <img class="firimg" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png" /> -->
+                    <ng-container *ngIf="product.IsFavorite==false">
+                       <img class="firimg" (click)="favoriteadd(product.PID,true)" src="assets/Images/assets/favorites.png"/> 
+                      </ng-container>
+                       <ng-container *ngIf="product.IsFavorite==true">
+                    <img class="firimg"  (click)="favoriteadd(product.PID,false)" src="assets/Images/assets/favorites-active.png"/> 
+                  </ng-container>
+                    <img class="second_img" (click)="ProductClick(product.PID)" src='{{product.ProductImg}}' />
+                    <!-- <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" /> -->
+                  
+                    <ng-container *ngIf="product.InCart==0">
+                    <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart.png" />
+                  </ng-container>
+                  <ng-container *ngIf="product.InCart!=0">
+                      <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart-active.png" />
+                    </ng-container>
+  
+                  </div>
+                  <div class="second_content" (click)="ProductClick(product.PID)">
+                    <div class="">
+                        <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
+                            <p class="price">{{product.PriceDisplay}}</p>
+                            </ng-container>
+                            <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
+                                <h5>
+                                    <p class="strike_text">{{product.PriceDisplay}}</p>
+                                  <p class="price">{{product.OfferPriceDisplay}}</p>
+                                 </h5>
+                          </ng-container>
+                      <h5>{{product.ProductName}}</h5>
+                         <p> {{product.Size}}</p>
+                      <p class="rating_star">
+                        <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
+                        <span class="first">{{product.ReviewCount}} reviews</span>
+                        <span class="reviews"> </span>
+                      </p>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
