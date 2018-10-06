@@ -35,10 +35,28 @@ export class HeaderComponent implements OnInit {
   ids: any;
   EmailIdd: any;
   storeGetHomeData: any;
-  beerSelectedType: any[] = []
-  beerSelectedTypeAll: any[] = []
 
-  // @Input() childMessage: any;
+  beerFilterTypes:any[] = []
+  selectedAllBeerFilterTypes: any;
+  beerFilterSizes:any[] = []
+  selectedAllBeerFilterSizes: any;
+  beerFilterPrices:any[] = []
+  selectedAllBeerFilterPrices: any;
+
+  liquorFilterTypes:any[] = []
+  selectedAllLiquorFilterTypes: any;
+  liquorFilterSizes:any[] = []
+  selectedAllLiquorFilterSizes: any;
+  liquorFilterPrices:any[] = []
+  selectedAllLiquorFilterPrices: any;
+
+  wineFilterTypes:any[] = []
+  selectedAllWineFilterTypes: any;
+  wineFilterSizes:any[] = []
+  selectedAllWineFilterSizes: any;
+  wineFilterPrices:any[] = []
+  selectedAllWineFilterPrices: any;
+
   constructor(private loginservice: LoginService, private appService: AppService, private activatedRoute: ActivatedRoute, private router: Router) {
 
   }
@@ -84,19 +102,9 @@ export class HeaderComponent implements OnInit {
       $(this).addClass('active').siblings().removeClass('active');
     });
 
-    // $('nav ul li a').click(function(){
-    //   $('li a').removeClass("active");
-    //   $(this).addClass("active");
-    // });
-
     this.searchform = new FormGroup({
       search: new FormControl('')
     })
-    // this.custermerinfo=localStorage.getItem('custermerinfo');
-
-    //   this.router.routeReuseStrategy.shouldReuseRoute = function() {
-    //     return false;
-    // };
 
     this.userprofilename();
 
@@ -126,26 +134,6 @@ export class HeaderComponent implements OnInit {
     this.carttotal();
   }
 
-  onbeerSelectedTypeAllClick(event) {
-    console.log(event);
-    if (event.length) {
-      console.log("beerSelectedTypeAll====>", this.beerSelectedTypeAll);
-    // storeGetHomeData?.StoreFilters[0].ListType      
-    for(let i=0; i< this.storeGetHomeData.StoreFilters[0].ListType.length; i++) {
-      this.beerSelectedType.push(this.storeGetHomeData.StoreFilters[0].ListType[i].TypeName)
-    }
-    console.log("selected beer option are ==>", this.beerSelectedType)
-    } else {
-      this.beerSelectedType = [];
-    }
-    
-
-  }
-
-  onExtendedMenuClick(event) {
-    event.preventDefault();
-  }
-
   gotocart() {
     this.router.navigate(['/cart']);
   }
@@ -167,10 +155,260 @@ export class HeaderComponent implements OnInit {
           this.storeGetHomeData = Response;
            console.log(this.storeGetHomeData);
           this.custermerinfo = Response.CustomerInfo.CartItemCount;
+
+          this.createBeerFilterType(Response);
+          this.createBeerFilterSizes(Response);
+          // this.createBeerFilterPrices(Response);
+
+          this.createLiquorFilterType(Response);
+          this.createLiquorFilterSizes(Response);
+          // this.createLiquorFilterPrices(Response);
+
+          this.createWineFilterType(Response);
+          this.createWineFilterSizes(Response);
+          // this.createWineFilterPrices(Response);
+          
+          
         }
 
       });
 
+  }
+
+  /**
+   * Code for Beer Filter Type
+   */
+
+  createBeerFilterType(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
+      this.beerFilterTypes.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("beerFilterTypes list is ==>", this.beerFilterTypes)
+  }
+
+  selectAllbeerFilterTypes() {
+    for (var i = 0; i < this.beerFilterTypes.length; i++) {
+      this.beerFilterTypes[i].selected = this.selectedAllBeerFilterTypes;
+    }
+  }
+
+  checkIfAllBeerFilterTypesSelected() {
+    this.selectedAllBeerFilterTypes = this.beerFilterTypes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for Beer Filter Size
+   */
+
+  createBeerFilterSizes(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
+      this.beerFilterSizes.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListSize[i].UnitSize,
+        selected: false
+      });
+    }
+    console.log("beerFilterSizes list is ==>", this.beerFilterSizes)
+  }
+
+  selectAllbeerFilterSizes() {
+    for (var i = 0; i < this.beerFilterSizes.length; i++) {
+      this.beerFilterSizes[i].selected = this.selectedAllBeerFilterSizes;
+    }
+  }
+  
+  checkIfAllBeerFilterSizesSelected() {
+    this.selectedAllBeerFilterSizes = this.beerFilterSizes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for Beer Filter Price
+   */
+
+  createBeerFilterPrices(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+      this.beerFilterPrices.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("beerFilterPrices list is ==>", this.beerFilterPrices)
+  }
+
+  selectAllbeerFilterPrices() {
+    for (var i = 0; i < this.beerFilterPrices.length; i++) {
+      this.beerFilterPrices[i].selected = this.selectedAllBeerFilterPrices;
+    }
+  }
+  
+  checkIfAllBeerFilterPricesSelected() {
+    this.selectedAllBeerFilterPrices = this.beerFilterPrices.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  
+  /**
+   * Code for Liquor Filter Type
+   */
+
+  createLiquorFilterType(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[1].ListType.length; i++) {
+      this.liquorFilterTypes.push({
+        name: storeGetHomeResponce.StoreFilters[1].ListType[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("LiquorFilterTypes list is ==>", this.liquorFilterTypes)
+  }
+
+  selectAllLiquorFilterTypes() {
+    for (var i = 0; i < this.liquorFilterTypes.length; i++) {
+      this.liquorFilterTypes[i].selected = this.selectedAllLiquorFilterTypes;
+    }
+  }
+
+  checkIfAllLiquorFilterTypesSelected() {
+    this.selectedAllLiquorFilterTypes = this.liquorFilterTypes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for Liquor Filter Size
+   */
+
+  createLiquorFilterSizes(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[2].ListSize.length; i++) {
+      this.liquorFilterSizes.push({
+        name: storeGetHomeResponce.StoreFilters[2].ListSize[i].UnitSize,
+        selected: false
+      });
+    }
+    console.log("liquorFilterSizes list is ==>", this.liquorFilterSizes)
+  }
+
+  selectAllLiquorFilterSizes() {
+    for (var i = 0; i < this.liquorFilterSizes.length; i++) {
+      this.liquorFilterSizes[i].selected = this.selectedAllLiquorFilterSizes;
+    }
+  }
+  
+  checkIfAllLiquorFilterSizesSelected() {
+    this.selectedAllLiquorFilterSizes = this.liquorFilterSizes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for liquor Filter Price
+   */
+
+  createLiquorFilterPrices(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+      this.liquorFilterPrices.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("liquorFilterPrices list is ==>", this.liquorFilterPrices)
+  }
+
+  selectAllLiquorFilterPrices() {
+    for (var i = 0; i < this.liquorFilterPrices.length; i++) {
+      this.liquorFilterPrices[i].selected = this.selectedAllLiquorFilterPrices;
+    }
+  }
+  
+  checkIfAllLiquorFilterPricesSelected() {
+    this.selectedAllLiquorFilterPrices = this.liquorFilterPrices.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  
+  /**
+   * Code for Wine Filter Type
+   */
+
+  createWineFilterType(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
+      this.wineFilterTypes.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("wineFilterTypes list is ==>", this.wineFilterTypes)
+  }
+
+  selectAllWineFilterTypes() {
+    for (var i = 0; i < this.wineFilterTypes.length; i++) {
+      this.wineFilterTypes[i].selected = this.selectedAllWineFilterTypes;
+    }
+  }
+
+  checkIfAllWineFilterTypesSelected() {
+    this.selectedAllWineFilterTypes = this.wineFilterTypes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for Wine Filter Size
+   */
+
+  createWineFilterSizes(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
+      this.wineFilterSizes.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListSize[i].UnitSize,
+        selected: false
+      });
+    }
+    console.log("wineFilterSizes list is ==>", this.wineFilterSizes)
+  }
+
+  selectAllWineFilterSizes() {
+    for (var i = 0; i < this.wineFilterSizes.length; i++) {
+      this.wineFilterSizes[i].selected = this.selectedAllWineFilterSizes;
+    }
+  }
+  
+  checkIfAllWineFilterSizesSelected() {
+    this.selectedAllWineFilterSizes = this.wineFilterSizes.every(function(item:any) {
+        return item.selected == true;
+      })
+  }
+
+  /**
+   * Code for Beer Filter Price
+   */
+
+  createWineFilterPrices(storeGetHomeResponce) {
+    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+      this.wineFilterPrices.push({
+        name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
+        selected: false
+      });
+    }
+    console.log("wineFilterPrices list is ==>", this.wineFilterPrices)
+  }
+
+  selectAllwineFilterPrices() {
+    for (var i = 0; i < this.wineFilterPrices.length; i++) {
+      this.wineFilterPrices[i].selected = this.selectedAllWineFilterPrices;
+    }
+  }
+  
+  checkIfAllWineFilterPricesSelected() {
+    this.selectedAllWineFilterPrices = this.wineFilterPrices.every(function(item:any) {
+        return item.selected == true;
+      })
   }
 
   UserLogout() {

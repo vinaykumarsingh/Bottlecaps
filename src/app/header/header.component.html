@@ -83,7 +83,7 @@
         </div>
     </div>
 
-    <nav class="navbar bg_color default" id="menu">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="menu">
         <div class="container">
             <div class="row">
 
@@ -112,19 +112,6 @@
                     </span>
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
-                    <!-- <ul class="nav navbar-nav main_ul">
-                      <li (ngClass)="active ? 'active': 'unactive'" *ngFor="let link of mainlinks" [routerLink]="link.urlpath"><a >{{link.linkname}}</a></li>
-                      </ul> -->
-                    <!-- <ul class="nav navbar-nav" id="main_ul"> 
-          <li [routerLink]="['/']"><a class="active">Home</a></li>
-          <li [routerLink]="['/aboutus']"><a>About</a></li>
-          <li [routerLink]="['/']"><a>Feature Products</a></li> 
-          <li><a (click)="onclick(1)">Beer</a></li>
-          <li><a (click)="onclick(2)">Liquor</a></li>
-          <li><a (click)="onclick(3)">Wine</a></li>
-          <li><a (click)="onclick(4)"> Mixers & More</a></li>
-          <li [routerLink]="['/recipes']"><a>Recipes</a></li>
-       </ul> -->
 
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="collapse navbar-collapse js-navbar-collapse">
@@ -146,12 +133,14 @@
                                         <li class="col-lg-4 col-md-4 col-sm-4">
                                             <ul class="filters">
                                                 <h3 class="first">Basic</h3>
-                                                <p-checkbox name="beerType" value="ALL" label="ALL" (ngModelChange)="onbeerSelectedTypeAllClick($event)" [(ngModel)]="beerSelectedTypeAll" inputId="beerALL"></p-checkbox>
+                                                <p-checkbox name="beerType" value="ALL" label="ALL" (ngModelChange)="onbeerSelectedTypeAllClick($event)" [(ngModel)]="beerSelectedTypeAll"
+                                                    inputId="beerALL"></p-checkbox>
 
                                             </ul>
                                             <ul class="filters_data">
                                                 <li *ngFor="let listType of storeGetHomeData?.StoreFilters[0].ListType">
-                                                    <p-checkbox name={{listType.TypeName}}  value={{listType.TypeName}}  label={{listType.TypeName}} [(ngModel)]="beerSelectedType" inputId={{listType.TypeName}} ></p-checkbox>
+                                                    <p-checkbox name={{listType.TypeName}} value={{listType.TypeName}} label={{listType.TypeName}} [(ngModel)]="beerSelectedType"
+                                                        inputId={{listType.TypeName}}></p-checkbox>
                                                 </li>
                                             </ul>
                                         </li>
@@ -279,7 +268,6 @@
                                             <button type="submit" class="btn btn-primaray">
                                                 <img src="assets/Images/assets/search.png">
                                             </button>
-                                            <!-- </div> -->
                                         </div>
                                     </form>
                                 </li>
@@ -288,44 +276,200 @@
 
                         </div>
                     </div>
-
-
-
-
-
-                    <!-- <ul class="float_right">
-          <li class="display_mobile">
-              <img src="assets/Images/assets/profile.png" alt="Battlecapse">
-           <a (click)="userlogin()"><span>{{username}}</span></a> 
-            <h6 #logout style="display: none">LogOut</h6> 
-          </li>
-          <li class="display_mobile" [routerLink]="['/cart']">
-            <img src="assets/Images/assets/cart.png" alt="Battlecapse" >
-            <a>Shopping Cart </a>
-            <span>{{custermerinfo}} Item (s)</span>
-          </li>
-        </ul> -->
-                    <!-- <div class="col-md-4 col-lg-4 col-sm-4 col-xs-12 padding_left"> -->
-                    <!-- <ul class="nav navbar-nav navbar-right mobile_none">
-            <li> 
-                <form [formGroup]=searchform (ngSubmit)="searchcproduct()">
-                    <div class="input-group">
-                <input type="text" class="form-control"  formControlName="search" placeholder="Search..">
-
-                  <button type="submit" class="btn btn-primaray">
-                      <img src="assets/Images/assets/search.png">
-                  </button>
-          
-              </div>
-                     </form>
-            </li>
-           
-          </ul> -->
                 </div>
             </div>
         </div>
 
+    </nav> -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" [routerLink]="['/']">
+                        <a class="active">Home</a>
+                    </li>
+                    <li class="nav-item" [routerLink]="['/about']">
+                        <a>About</a>
+                    </li>
+                    <li class="nav-item" [routerLink]="['/']">
+                        <a>Feature Products</a>
+                    </li>
+                    <li class="nav-item dropdown dropdown_menu">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            BEER
+                        </a>
+                        <!-- <i class="fa fa-caret-up" aria-hidden="true" style=color:red;></i> -->
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="text-uppercase text-white">TYPE</span>
+                                    <ul class="nav flex-column">
+
+                                        <!-- <li class="nav-item"> -->
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllBeerFilterTypes" (change)="selectAllbeerFilterTypes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let beerFilterType of beerFilterTypes">
+                                            <input type="checkbox" [(ngModel)]="beerFilterType.selected" (change)="checkIfAllBeerFilterTypesSelected();"> {{beerFilterType.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">SIZE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllBeerFilterSizes" (change)="selectAllbeerFilterSizes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let beerFilterSize of beerFilterSizes">
+                                            <input type="checkbox" [(ngModel)]="beerFilterSize.selected" (change)="checkIfAllBeerFilterSizesSelected();"> {{beerFilterSize.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">PRICE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllBeerFilterPrices" (change)="selectAllbeerFilterPrices();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let beerFilterPrice of beerFilterPrices">
+                                            <input type="checkbox" [(ngModel)]="beerFilterPrice.selected" (change)="checkIfAllBeerFilterPricesSelected();"> {{beerFilterPrice.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                            </div>
+                        </div>
+                        <!--  /.container  -->
+
+
+
+                    </li>
+                    <li class="nav-item dropdown dropdown_menu">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            LIQUOR
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="text-uppercase text-white">TYPE</span>
+                                    <ul class="nav flex-column">
+
+                                        <!-- <li class="nav-item"> -->
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllLiquorFilterTypes" (change)="selectAllLiquorFilterTypes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let liquorFilterType of liquorFilterTypes">
+                                            <input type="checkbox" [(ngModel)]="liquorFilterType.selected" (change)="checkIfAllLiquorFilterTypesSelected();"> {{liquorFilterType.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">SIZE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllLiquorFilterSizes" (change)="selectAllLiquorFilterSizes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let liquorFilterSize of liquorFilterSizes">
+                                            <input type="checkbox" [(ngModel)]="liquorFilterSize.selected" (change)="checkIfAllLiquorFilterSizesSelected();"> {{liquorFilterSize.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">PRICE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllLiquorFilterPrices" (change)="selectAllLiquorFilterPrices();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let liquorFilterPrice of liquorFilterPrices">
+                                            <input type="checkbox" [(ngModel)]="liquorFilterPrice.selected" (change)="checkIfAllLiquorFilterPricesSelected();"> {{liquorFilterPrice.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown dropdown_menu">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            WINE
+                        </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span class="text-uppercase text-white">TYPE</span>
+                                    <ul class="nav flex-column">
+
+                                        <!-- <li class="nav-item"> -->
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllWineFilterTypes" (change)="selectAllWineFilterTypes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let wineFilterType of wineFilterTypes">
+                                            <input type="checkbox" [(ngModel)]="wineFilterType.selected" (change)="checkIfAllWineFilterTypesSelected();"> {{wineFilterType.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">SIZE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllWineFilterSizes" (change)="selectAllWineFilterSizes();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let wineFilterSize of wineFilterSizes">
+                                            <input type="checkbox" [(ngModel)]="wineFilterSize.selected" (change)="checkIfAllWineFilterSizesSelected();"> {{wineFilterSize.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                                <div class="col-md-4">
+                                    <ul class="nav flex-column">
+                                        <span class="text-uppercase text-white">PRICE</span>
+                                        <li class="nav-item">
+                                            <input type="checkbox" [(ngModel)]="selectedAllWineFilterPrices" (change)="selectAllWineFilterPrices();" /> All
+                                        </li>
+                                        <li class="nav-item" *ngFor="let wineFilterPrice of wineFilterPrices">
+                                            <input type="checkbox" [(ngModel)]="wineFilterPrice.selected" (change)="checkIfAllWineFilterPricesSelected();"> {{wineFilterPrice.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.col-md-4  -->
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item" [routerLink]="['/']">
+                        <a>MIXERS & MORE</a>
+                    </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right mobile_none">
+                    <li>
+                        <form [formGroup]=searchform (ngSubmit)="searchcproduct()">
+                            <div class="input-group">
+                                <input type="text" class="form-control" formControlName="search" placeholder="Search..">
+
+                                <button type="submit" class="btn btn-primaray">
+                                    <img src="assets/Images/assets/search.png">
+                                </button>
+
+                            </div>
+                        </form>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+
     </nav>
-
 </header>
-
