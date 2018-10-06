@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
   EmailIdd: any;
   storeGetHomeData: any;
   beerSelectedType: any[] = []
+  beerSelectedTypeAll: any[] = []
 
   // @Input() childMessage: any;
   constructor(private loginservice: LoginService, private appService: AppService, private activatedRoute: ActivatedRoute, private router: Router) {
@@ -123,6 +124,26 @@ export class HeaderComponent implements OnInit {
     });
 
     this.carttotal();
+  }
+
+  onbeerSelectedTypeAllClick(event) {
+    console.log(event);
+    if (event.length) {
+      console.log("beerSelectedTypeAll====>", this.beerSelectedTypeAll);
+    // storeGetHomeData?.StoreFilters[0].ListType      
+    for(let i=0; i< this.storeGetHomeData.StoreFilters[0].ListType.length; i++) {
+      this.beerSelectedType.push(this.storeGetHomeData.StoreFilters[0].ListType[i].TypeName)
+    }
+    console.log("selected beer option are ==>", this.beerSelectedType)
+    } else {
+      this.beerSelectedType = [];
+    }
+    
+
+  }
+
+  onExtendedMenuClick(event) {
+    event.preventDefault();
   }
 
   gotocart() {

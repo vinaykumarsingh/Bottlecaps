@@ -1,271 +1,251 @@
-<!-- <app-header [childMessage]="parentMessage"></app-header> -->
- <ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template"  style= "margin:0 auto; text-align: center;"[zIndex]="9999"></ng4-loading-spinner> 
-<div class="container">
-<section>
+
+<ng4-loading-spinner [threshold]="2000" [timeout]="4000" [template]="template" style="margin:0 auto; text-align: center;"
+  [zIndex]="9999"></ng4-loading-spinner>
+<div class="container carouselContainer">
+  <section>
     <div *ngIf="productsList.length > 0">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-            <!-- <ng-container *ngFor="let length of eventlenght "></ng-container> -->
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          
-          </ol>
-      
-          <!-- Wrapper for slides -->
-          <div class="carousel-inner" role="listbox">
-      
-     <div class="item" *ngFor="let event of eventList; let i=index" [ngClass]="carousalfirstImage==event.EventLargeImage ? 'active':''">
-              <img src="{{event.EventLargeImage}}" alt="selectedItem">
-              <!-- <div class="carousel-caption" [innerHTML]=event.EventDescription></div> -->
-            </div>
+      <div id="myCarousel" class="carousel realCarouselContainer" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <div class="item" *ngFor="let event of eventList; let i=index" [ngClass]="carousalfirstImage==event.EventLargeImage ? 'active':''">
+            <img src="{{event.EventLargeImage}}" alt="selectedItem">
           </div>
         </div>
       </div>
-      <div *ngIf="productsList.length === 0" class="skeleton">
-          <div *ngFor="let fake of generateFake(12)" class="card-layout">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <!-- <ng-container *ngFor="let length of eventlenght "></ng-container> -->
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                  
-                  </ol>
-              
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-              
-             <div class="item" *ngFor="let event of eventList; let i=index" [ngClass]="carousalfirstImage==event.EventLargeImage ? 'active':''">
-                      <img src="{{event.EventLargeImage}}" alt="selectedItem">
-                      <!-- <div class="carousel-caption" [innerHTML]=event.EventDescription></div> -->
-                    </div>
-                  </div>
-                </div>
-                </div>
-                </div>
-      </section>
-    </div> 
-      <div class="container">
-        <!-- <div class="row">
-         <div class="product_gallery">
-        
-              <div class=" col-lg-3 col-md-3 col-sm-3 col-xs-3" *ngFor="let storefilter of storefilters;let i=index">
-                        <div class="gallery"(click)="categoryproduct(storefilter.CategoryId)">
-                            <img class="main_img" src='{{storefilter.CategoryBanner}}'/>
-                            <div class="text-block">
-                              
-                               <img  class="firimg" src='{{storefilter.CategoryWebIcon}}'> 
-                                <span>{{storefilter.CategoryName}}</span>
-                            </div>
-                          </div>
-                  </div>
-          </div> 
-          </div> -->
-          <div class="row">
- 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <div class="row">
-              <div  class="Searchrelated_noborder slideInUP wow delay-05s  animated col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                      <h4>{{hometitle}}</h4>
-                     </div>
-                    <div class="button_feature col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                    <button class="btn btn-default" >All</button>
-                    <button class="btn btn-default">Beer</button>
-                    <button class="btn btn-default" >Liquor</button>
-                    <button class="btn btn-default" >Wine</button>
-                    <button class="btn btn-default" >Mixers & More</button>
-                               
-                       </div>
-                     </div> 
-                    
-                     <div *ngIf="productsList.length > 0">
-                        <!-- <div class="row"> -->
-                        <div class="Main_bottlesection">
-                              <div *ngFor="let product of productsList;let i=index;" class="col-lg-3 col-md-3 col-sm-3 col-xs-4 slideInUP wow delay-05s  animated item_img circle">
-                              
-                                 <div class="img_div" >
-                                    <ng-container *ngIf="product.OfferType=='CLUB'">
-                                        <img class="offericon" src='{{product.OfferIcon}}'>
-                                      </ng-container>
-                                      <ng-container *ngIf="product.OfferType=='SALE'">
-                                       <img class="offericon" src='{{product.OfferIcon}}'>
-                                     </ng-container>
-                                    
-                                     <ng-container *ngIf="product.OfferType==''">
-                                       <img class="offericon" src='{{product.OfferIcon}}'>
-                                     </ng-container>
-                                     
-                                      <div class="margin_bottom">
-                                          <!-- <img  class="firimg" id="myImage" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> -->
-                                       
-                                          <ng-container *ngIf="product.IsFavorite==false">
-                                              <img class="firimg" (click)="favoriteadd(product.PID,true,i)" src="assets/Images/assets/favorites.png"/> 
-                                             </ng-container>
-                                              <ng-container *ngIf="product.IsFavorite==true">
-                                           <img class="firimg"  (click)="favoriteadd(product.PID,false,i)" src="assets/Images/assets/favorites-active.png"/> 
-                                         </ng-container >
-                                       
-                                          <img class="second_img" (click)="Productgetdetailes(product.PID)" src='{{product.ProductImg}}'/>
-    
-                                          <ng-container *ngIf="product.InCart==0">
-                                              <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart.png" />
-                                            </ng-container>
-                                            <ng-container *ngIf="product.InCart!=0">
-                                                <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart-active.png" />
-                                              </ng-container>
-                                      </div>
-                                      <div class="second_content" (click)="Productgetdetailes(product.PID)">
-                                              <div class="">
-                                                  <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
-                                                      <p class="price">{{product.PriceDisplay}}</p>
-                                                      </ng-container>
-                                                      <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
-                                                     <h5>
-                                                        <p class="strike_text">{{product.PriceDisplay}}</p>
-                                                      <p class="price">{{product.OfferPriceDisplay}}</p>
-                                                     </h5>
-                                                    </ng-container>
-                                                      <h5 class="productname">{{product.ProductName}}</h5>
-                                                   
-                                                     <p class="product_size">
-                                                       <span>{{unitesize.UnitSize}}</span>
-                                                       </p>
-    
-                                                      <p class="rating_star">
-                                                          <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
-                                                          <span class="first">{{product.ReviewCount}}</span>
-                                                          <span class="reviews">reviews</span>
-                                                      </p>
-                                                      
-                                                     
-                                              </div>
-                                      </div>
-                                  </div>
-                                
-                               
-                              </div>
-                          <!-- </div> -->
-                      </div>
-                    </div>
-    
-                    <div *ngIf="productsList.length === 0" class="skeleton">
-                      <div *ngFor="let fake of generateFake(12)" class="card-layout">
-                        <div class="Main_bottlesection">
-                          <!-- <div class="row"> -->
-                              <div  class="col-lg-3 col-md-3 col-sm-3 col-xs-4 slideInUP wow delay-05s  animated item_img circle">
-                              
-                                 <div class="img_div" >
-                                    <ng-container *ngIf="product.OfferType=='CLUB'">
-                                        <img class="offericon" src='{{product.OfferIcon}}'>
-                                      </ng-container>
-                                      <ng-container *ngIf="product.OfferType=='SALE'">
-                                       <img class="offericon" src='{{product.OfferIcon}}'>
-                                     </ng-container>
-                                    
-                                     <ng-container *ngIf="product.OfferType==''">
-                                       <img class="offericon" src='{{product.OfferIcon}}'>
-                                     </ng-container>
-                                     
-                                      <div class="margin_bottom">
-                                          <!-- <img  class="firimg" id="myImage" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> -->
-                                       
-                                          <ng-container *ngIf="product.IsFavorite==false">
-                                              <img class="firimg" (click)="favoriteadd(product.PID,true,i)" src="assets/Images/assets/favorites.png"/> 
-                                             </ng-container>
-                                              <ng-container *ngIf="product.IsFavorite==true">
-                                           <img class="firimg"  (click)="favoriteadd(product.PID,false,i)" src="assets/Images/assets/favorites-active.png"/> 
-                                         </ng-container >
-                                       
-                                          <img class="second_img" (click)="Productgetdetailes(product.PID)" src='{{product.ProductImg}}'/>
-    
-                                          <ng-container *ngIf="product.InCart==0">
-                                              <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart.png" />
-                                            </ng-container>
-                                            <ng-container *ngIf="product.InCart!=0">
-                                                <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart-active.png" />
-                                              </ng-container>
-                                      </div>
-                                      <div class="second_content" (click)="Productgetdetailes(product.PID)">
-                                              <div class="">
-                                                  <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
-                                                      <p class="price">{{product.PriceDisplay}}</p>
-                                                      </ng-container>
-                                                      <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
-                                                     <h5>
-                                                        <p class="strike_text">{{product.PriceDisplay}}</p>
-                                                      <p class="price">{{product.OfferPriceDisplay}}</p>
-                                                     </h5>
-                                                    </ng-container>
-                                                      <h5 class="productname">{{product.ProductName}}</h5>
-                                                   
-                                                     <p class="product_size">
-                                                       <span>{{unitesize.UnitSize}}</span>
-                                                       </p>
-    
-                                                      <p class="rating_star">
-                                                          <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
-                                                          <span class="first">{{product.ReviewCount}}</span>
-                                                          <span class="reviews">reviews</span>
-                                                      </p>
-                                                      
-                                                     
-                                              </div>
-                                      </div>
-                                  </div>
-                                
-                               
-                              </div>
-                        
-                      </div>
-                   
-                      </div>
-                    </div>
+    </div>
+    <div *ngIf="productsList.length === 0" class="skeleton fakeCarouselContainer">
+      <div *ngFor="let fake of generateFake(1)" class="card-layout">
+        <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
 
-                
-              </div>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item" *ngFor="let event of eventList; let i=index" [ngClass]="carousalfirstImage==event.EventLargeImage ? 'active':''">
+              <img src="{{event.EventLargeImage}}" alt="selectedItem">
             </div>
           </div>
-          <section class="bgr_img">
-              <div class="container">
-             <div class="display_center font_family_Montserrat_Bold slideInUP wow delay-05s  animated col-lg-12 col-lg-ofset-2 col-md-ofset-2 col-md-12 col-sm-12 col-xs-12">
-                <h4>There Is an App for that</h4>
-                <h2>Download our app from Appstore</h2>
-                <a><img src="assets/Images/assets/ios.png"></a>
-                <a><img src="assets/Images/assets/android.png"></a>
-          
-             </div>
-            </div>
-          
-          
-           </section>
- 
-
-            
-  <div id="boxes">
-
-    <div id="dialog" class="window modal-content">
-      <div class="modal-header">
-      
-        <img src='assets/Images/assets/logo-popup.png' />
+        </div> -->
+        <div class="fakeCarousel">
+        </div>
       </div>
-      <div class="modal-body">
-        <p class="font">As a retailer of wine, spirits and beer. We require all shoppers to be atleast 21 years of age</p>
-        <h4 class="bold">Were you born before this date ?</h4>
-        <h2 class="popins_bold">{{agelimit | date:'MMMM d, y'}}</h2>
-        <div>
+    </div>
+  </section>
+</div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="Searchrelated_noborder slideInUP wow delay-05s  animated col-lg-5 col-md-5 col-sm-5 col-xs-12">
+          <h4>{{hometitle}}</h4>
+        </div>
+        <div class="button_feature col-lg-7 col-md-7 col-sm-7 col-xs-12">
+          <button class="btn btn-default">All</button>
+          <button class="btn btn-default">Beer</button>
+          <button class="btn btn-default">Liquor</button>
+          <button class="btn btn-default">Wine</button>
+          <button class="btn btn-default">Mixers & More</button>
+
+        </div>
+      </div>
+
+      <div *ngIf="productsList.length > 0">
+        <div class="Main_bottlesection">
+          <div *ngFor="let product of productsList;let i=index;" class="col-lg-3 col-md-3 col-sm-3 col-xs-4 slideInUP wow delay-05s  animated item_img circle">
+
+            <div class="img_div">
+              <ng-container *ngIf="product.OfferType=='CLUB'">
+                <img class="offericon" src='{{product.OfferIcon}}'>
+              </ng-container>
+              <ng-container *ngIf="product.OfferType=='SALE'">
+                <img class="offericon" src='{{product.OfferIcon}}'>
+              </ng-container>
+
+              <ng-container *ngIf="product.OfferType==''">
+                <img class="offericon" src='{{product.OfferIcon}}'>
+              </ng-container>
+
+              <div class="margin_bottom">
+                <!-- <img  class="firimg" id="myImage" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> -->
+
+                <ng-container *ngIf="product.IsFavorite==false">
+                  <img class="firimg" (click)="favoriteadd(product.PID,true,i)" src="assets/Images/assets/favorites.png" />
+                </ng-container>
+                <ng-container *ngIf="product.IsFavorite==true">
+                  <img class="firimg" (click)="favoriteadd(product.PID,false,i)" src="assets/Images/assets/favorites-active.png" />
+                </ng-container>
+
+                <img class="second_img" (click)="Productgetdetailes(product.PID)" src='{{product.ProductImg}}' />
+
+                <ng-container *ngIf="product.InCart==0">
+                  <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart.png" />
+                </ng-container>
+                <ng-container *ngIf="product.InCart!=0">
+                  <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart-active.png" />
+                </ng-container>
+              </div>
+              <div class="second_content" (click)="Productgetdetailes(product.PID)">
+                <div class="">
+                  <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
+                    <p class="price">{{product.PriceDisplay}}</p>
+                  </ng-container>
+                  <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
+                    <h5>
+                      <p class="strike_text">{{product.PriceDisplay}}</p>
+                      <p class="price">{{product.OfferPriceDisplay}}</p>
+                    </h5>
+                  </ng-container>
+                  <h5 class="productname">{{product.ProductName}}</h5>
+
+                  <p class="product_size">
+                    <span>{{unitesize.UnitSize}}</span>
+                  </p>
+
+                  <p class="rating_star">
+                    <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
+                    <span class="first">{{product.ReviewCount}}</span>
+                    <span class="reviews">reviews</span>
+                  </p>
+
+
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <div *ngIf="productsList.length === 0" class="skeleton">
+        <div *ngFor="let fake of generateFake(12)" class="card-layout">
+          <div class="Main_bottlesection">
+            <!-- <div class="row"> -->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 slideInUP wow delay-05s  animated item_img circle">
+
+              <div class="img_div">
+                <ng-container *ngIf="product.OfferType=='CLUB'">
+                  <img class="offericon" src='{{product.OfferIcon}}'>
+                </ng-container>
+                <ng-container *ngIf="product.OfferType=='SALE'">
+                  <img class="offericon" src='{{product.OfferIcon}}'>
+                </ng-container>
+
+                <ng-container *ngIf="product.OfferType==''">
+                  <img class="offericon" src='{{product.OfferIcon}}'>
+                </ng-container>
+
+                <div class="margin_bottom">
+                  <!-- <img  class="firimg" id="myImage" (click)="favoriteadd(product.PID)" src="assets/Images/assets/favorites.png"/> -->
+
+                  <ng-container *ngIf="product.IsFavorite==false">
+                    <img class="firimg" (click)="favoriteadd(product.PID,true,i)" src="assets/Images/assets/favorites.png" />
+                  </ng-container>
+                  <ng-container *ngIf="product.IsFavorite==true">
+                    <img class="firimg" (click)="favoriteadd(product.PID,false,i)" src="assets/Images/assets/favorites-active.png" />
+                  </ng-container>
+
+                  <img class="second_img" (click)="Productgetdetailes(product.PID)" src='{{product.ProductImg}}' />
+
+                  <ng-container *ngIf="product.InCart==0">
+                    <img class="third_img" (click)="addtocart(product.PID,i)" src="assets/Images/assets/add-cart.png" />
+                  </ng-container>
+                  <ng-container *ngIf="product.InCart!=0">
+                    <img class="third_img" (click)="addtocart(product.PID)" src="assets/Images/assets/add-cart-active.png" />
+                  </ng-container>
+                </div>
+                <div class="second_content" (click)="Productgetdetailes(product.PID)">
+                  <div class="">
+                    <ng-container *ngIf="product.PriceDisplay == product.OfferPriceDisplay">
+                      <p class="price">{{product.PriceDisplay}}</p>
+                    </ng-container>
+                    <ng-container *ngIf="product.PriceDisplay != product.OfferPriceDisplay">
+                      <h5>
+                        <p class="strike_text">{{product.PriceDisplay}}</p>
+                        <p class="price">{{product.OfferPriceDisplay}}</p>
+                      </h5>
+                    </ng-container>
+                    <h5 class="productname">{{product.ProductName}}</h5>
+
+                    <p class="product_size">
+                      <span>{{unitesize.UnitSize}}</span>
+                    </p>
+
+                    <p class="rating_star">
+                      <i class="fa fa-star" *ngFor="let star of [0,1,2,3,4]" [ngClass]="{'checked':star+0.5 <= product.Rating, 'fa-star-half-o':star+0.5 == product.Rating}"></i>
+                      <span class="first">{{product.ReviewCount}}</span>
+                      <span class="reviews">reviews</span>
+                    </p>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<section class="bgr_img">
+  <div class="container">
+    <div class="display_center font_family_Montserrat_Bold slideInUP wow delay-05s  animated col-lg-12 col-lg-ofset-2 col-md-ofset-2 col-md-12 col-sm-12 col-xs-12">
+      <h4>There Is an App for that</h4>
+      <h2>Download our app from Appstore</h2>
+      <a>
+        <img src="assets/Images/assets/ios.png">
+      </a>
+      <a>
+        <img src="assets/Images/assets/android.png">
+      </a>
+
+    </div>
+  </div>
+
+
+</section>
+
+
+
+<div id="boxes">
+
+  <div id="dialog" class="window modal-content">
+    <div class="modal-header">
+
+      <img src='assets/Images/assets/logo-popup.png' />
+    </div>
+    <div class="modal-body">
+      <p class="font">As a retailer of wine, spirits and beer. We require all shoppers to be atleast 21 years of age</p>
+      <h4 class="bold">Were you born before this date ?</h4>
+      <h2 class="popins_bold">{{agelimit | date:'MMMM d, y'}}</h2>
+      <div>
         <button type="button" class="btn btn-default novalue">No</button>
         <button type="button" class="btn btn-default close" style="float: none;" data-dismiss="modal" (click)="dailogclick()">Yes</button>
       </div>
     </div>
-      <div class="modal-footer">
-        <p>You must be of legal drinking age to enter and use this site. To find out more about responsible consumption, visit the Foundation for Advancing Alcohol Responsibility and www.responsibility.org </p>
-        </div>
-      </div>
-  
-      <div id="mask"></div>
-    
-    </div> 
-    
+    <div class="modal-footer">
+      <p>You must be of legal drinking age to enter and use this site. To find out more about responsible consumption, visit
+        the Foundation for Advancing Alcohol Responsibility and www.responsibility.org </p>
+    </div>
+  </div>
+
+  <div id="mask"></div>
+
+</div>

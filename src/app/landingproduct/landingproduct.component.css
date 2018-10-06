@@ -26,8 +26,17 @@
 
 
 
+.carouselContainer {
+    background-image: url("../../assets/Images/fakeCarousel.png");
+    width:1200px;
+    height:600px;
+    background-size: cover;
+}
 
-
+.carouselContainer {
+    width:1200px;
+    height:600px;
+}
 
 
 .circle img {

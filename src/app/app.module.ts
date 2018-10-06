@@ -37,6 +37,7 @@ import{CheckoutComponent} from './checkout/checkout.component';
 import { AddnewaddressComponent } from "./addnewaddress/addnewaddress.component";
 import { LoginService } from './login/loginservice';
 import {CheckboxModule} from 'primeng/checkbox';
+import {MultiSelectModule} from 'primeng/multiselect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 enableProdMode();
 let config = new AuthServiceConfig([
@@ -113,7 +114,8 @@ const routes:Routes=[
      Ng4LoadingSpinnerModule.forRoot(),
      SocialLoginModule,
      CollapsibleModule,
-     CheckboxModule
+     CheckboxModule,
+     MultiSelectModule
 
   ],
   providers: [AppService,CookieService,AuthGuardService,LoginGuardService,LoginService,
