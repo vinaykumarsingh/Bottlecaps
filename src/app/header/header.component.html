@@ -10,14 +10,6 @@
                 </div>
 
                 <div class="col-md-8 col-lg-6 col-sm-8 col-xs-12 mobile_none">
-                    <!-- <ul class="float_right"> -->
-
-                    <!-- <li class="text_small" >
-                      <div class="header_icon">
-                      <img src="assets/Images/assets/profile.png" alt="Battlecapse">
-                  </div>
-                  <a (click)="userlogin()" class="username">{{username}}</a>
-                    </li>  -->
                     <ul class="nav navbar-nav float_right">
                         <li class="dropdown text_small">
                             <div class="header_icon">
@@ -35,17 +27,6 @@
                                     <a>
                                         <img class="beer" src="assets/Images/assets/account.png"> My Account
                                     </a>
-                                    <!-- <ul class="sidebar-submenu" style="display: none;">
-                                        <li>
-                                            <a>Profil Information</a>
-                                        </li>
-                                        <li>
-                                            <a>Manage Addresses</a>
-                                        </li>
-                                        <li>
-                                            <a>Payment methods</a>
-                                        </li>
-                                    </ul> -->
                                 </li>
 
                                 <li class="star_color" [routerLink]="['/myaccount']">
@@ -72,215 +53,10 @@
 
                         </li>
                     </ul>
-
-
-
-
-
-                    <!-- </ul> -->
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="menu">
-        <div class="container">
-            <div class="row">
-
-                <div class="navbar-header">
-                    <div class="input-group display_none col-md-12 col-lg-12 col-sm-8 col-xs-9">
-                        <input type="text" class="form-control search" id="myId" placeholder="Search..">
-
-                        <button type="button" class="btn btn-primaray">
-                            <img src="assets/Images/assets/search.png">
-                        </button>
-                    </div>
-                    <div class="col-md-12 col-lg-12 col-sm-8 col-xs-3">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    <a class="navbar-brand logo_logo" href="#">
-                        <img alt="Battlecapse" height="42" width="42" src="assets/Images/assets/logo.png">
-                    </a>
-                </div>
-                <div>
-                    <span>
-                        {{beerSelectedType}}
-                    </span>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="collapse navbar-collapse js-navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li [routerLink]="['/']">
-                                    <a class="active">Home</a>
-                                </li>
-                                <li [routerLink]="['/about']">
-                                    <a>About</a>
-                                </li>
-                                <li [routerLink]="['/']">
-                                    <a>Feature Products</a>
-                                </li>
-
-                                <li class="dropdown mega-dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown"> Beer </a>
-                                    <ul class="dropdown-menu mega-dropdown-menu" (click)="onExtendedMenuClick($event)">
-
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <h3 class="first">Basic</h3>
-                                                <p-checkbox name="beerType" value="ALL" label="ALL" (ngModelChange)="onbeerSelectedTypeAllClick($event)" [(ngModel)]="beerSelectedTypeAll"
-                                                    inputId="beerALL"></p-checkbox>
-
-                                            </ul>
-                                            <ul class="filters_data">
-                                                <li *ngFor="let listType of storeGetHomeData?.StoreFilters[0].ListType">
-                                                    <p-checkbox name={{listType.TypeName}} value={{listType.TypeName}} label={{listType.TypeName}} [(ngModel)]="beerSelectedType"
-                                                        inputId={{listType.TypeName}}></p-checkbox>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">SIZE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">PRICE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown mega-dropdown">
-                                    <a class="dropdown-toggle" (click)="onclick(2)" data-toggle="dropdown">Liquor</a>
-                                    <ul class="dropdown-menu mega-dropdown-menu">
-
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">TYPE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">SIZE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">PRICE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-
-                                </li>
-                                <li class="dropdown mega-dropdown">
-                                    <a class="dropdown-toggle" (click)="onclick(3)" data-toggle="dropdown">Wine</a>
-                                    <ul class="dropdown-menu mega-dropdown-menu">
-
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">TYPE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">SIZE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-                                        <li class="col-lg-4 col-md-4 col-sm-4">
-                                            <ul class="filters">
-                                                <li class="dropdown-header">PRICE</li>
-                                                <li>
-                                                    <input type="checkbox">
-                                                    <a>All</a>
-                                                </li>
-                                                <li>
-                                                    <input type="checkbox"> Dynamic Data Here</li>
-                                            </ul>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a (click)="onclick(4)"> Mixers & More</a>
-                                </li>
-                                <li [routerLink]="['/recipes']">
-                                    <a>Recipes</a>
-                                </li>
-                            </ul>
-
-                            <ul class="nav navbar-nav navbar-right mobile_none">
-                                <li>
-                                    <form [formGroup]=searchform (ngSubmit)="searchcproduct()">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" formControlName="search" placeholder="Search..">
-
-                                            <button type="submit" class="btn btn-primaray">
-                                                <img src="assets/Images/assets/search.png">
-                                            </button>
-                                        </div>
-                                    </form>
-                                </li>
-
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </nav> -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -342,6 +118,9 @@
                                     </ul>
                                 </div>
                                 <!-- /.col-md-4  -->
+                                <div class="btn_right">
+                                    <button class="btn btn-default" (click)="filterBeer()">Filter</button>
+                                </div>
                             </div>
                         </div>
                         <!--  /.container  -->
@@ -395,6 +174,9 @@
                                     </ul>
                                 </div>
                                 <!-- /.col-md-4  -->
+                                <div class="btn_right">
+                                    <button class="btn btn-default" (click)="filterLiquor()">Filter</button>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -443,6 +225,9 @@
                                     </ul>
                                 </div>
                                 <!-- /.col-md-4  -->
+                                <div class="btn_right">
+                                    <button class="btn btn-default" (click)="filterWine()">Filter</button>
+                                </div>
                             </div>
                         </div>
                     </li>

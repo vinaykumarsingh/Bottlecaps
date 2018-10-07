@@ -1,61 +1,25 @@
-/* section .carousel ol{
-    z-index: 1;
-} */
-
-/* .skeleton 
-  {
-      animation: loading 1.7s infinite linear;
-      background: #f6f7f8;
-      background-image: -webkit-linear-gradient(right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
-      background-image: linear-gradient(right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
-      background-repeat: no-repeat;
-      background-image: -webkit-radial-gradient( circle 50px at 50px 50px, lightgray 99%, transparent 0 ),
-    }
-
-  @keyframes loading {
-    0% {
-      
-      background-position: -100px;
-    }
-  
-    100% {
-      background-position: 200px;
-    }
-  }
-   */
-
-
-
-.carouselContainer {
+.carouselContainer section{
     background-image: url("../../assets/Images/fakeCarousel.png");
     width:1200px;
-    height:600px;
+    height:680px;
     background-size: cover;
 }
 
 .carouselContainer {
     width:1200px;
-    height:600px;
+    height:680px;
 }
 
 
 .circle img {
     transition: 1s ease;
     }
-    
-    /* .circle:hover {
-    transform: scale(1.1);
-    transition: .5s all;
-    } */
-    
 .product_gallery {
     margin: 30px 0 30px 0;
     float: left;
     width: 100%;
 }
 .Searchrelated_noborder h4{
-    /* width: 50%; */
-    /* height: 20px; */
     padding-left: 12px;
     border: none;
     float: left;
@@ -88,14 +52,6 @@
     border-color: #ec1c24;
     padding:5px 20px;
 }
-
-
-/* .active {
-    color: #ffffff !important;
-    background-color: #ec1c24 !important;
-    cursor: pointer;
-} */
-
 
 .gallery {
     position: relative;

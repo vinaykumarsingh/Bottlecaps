@@ -36,25 +36,25 @@ export class HeaderComponent implements OnInit {
   EmailIdd: any;
   storeGetHomeData: any;
 
-  beerFilterTypes:any[] = []
+  beerFilterTypes: any[] = []
   selectedAllBeerFilterTypes: any;
-  beerFilterSizes:any[] = []
+  beerFilterSizes: any[] = []
   selectedAllBeerFilterSizes: any;
-  beerFilterPrices:any[] = []
+  beerFilterPrices: any[] = []
   selectedAllBeerFilterPrices: any;
 
-  liquorFilterTypes:any[] = []
+  liquorFilterTypes: any[] = []
   selectedAllLiquorFilterTypes: any;
-  liquorFilterSizes:any[] = []
+  liquorFilterSizes: any[] = []
   selectedAllLiquorFilterSizes: any;
-  liquorFilterPrices:any[] = []
+  liquorFilterPrices: any[] = []
   selectedAllLiquorFilterPrices: any;
 
-  wineFilterTypes:any[] = []
+  wineFilterTypes: any[] = []
   selectedAllWineFilterTypes: any;
-  wineFilterSizes:any[] = []
+  wineFilterSizes: any[] = []
   selectedAllWineFilterSizes: any;
-  wineFilterPrices:any[] = []
+  wineFilterPrices: any[] = []
   selectedAllWineFilterPrices: any;
 
   constructor(private loginservice: LoginService, private appService: AppService, private activatedRoute: ActivatedRoute, private router: Router) {
@@ -153,7 +153,7 @@ export class HeaderComponent implements OnInit {
         if (Response) {
           // console.log(Response);
           this.storeGetHomeData = Response;
-           console.log(this.storeGetHomeData);
+          console.log(this.storeGetHomeData);
           this.custermerinfo = Response.CustomerInfo.CartItemCount;
 
           this.createBeerFilterType(Response);
@@ -167,8 +167,8 @@ export class HeaderComponent implements OnInit {
           this.createWineFilterType(Response);
           this.createWineFilterSizes(Response);
           // this.createWineFilterPrices(Response);
-          
-          
+
+
         }
 
       });
@@ -180,7 +180,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createBeerFilterType(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
       this.beerFilterTypes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeName,
         selected: false
@@ -196,9 +196,9 @@ export class HeaderComponent implements OnInit {
   }
 
   checkIfAllBeerFilterTypesSelected() {
-    this.selectedAllBeerFilterTypes = this.beerFilterTypes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllBeerFilterTypes = this.beerFilterTypes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -206,7 +206,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createBeerFilterSizes(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
       this.beerFilterSizes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListSize[i].UnitSize,
         selected: false
@@ -220,11 +220,11 @@ export class HeaderComponent implements OnInit {
       this.beerFilterSizes[i].selected = this.selectedAllBeerFilterSizes;
     }
   }
-  
+
   checkIfAllBeerFilterSizesSelected() {
-    this.selectedAllBeerFilterSizes = this.beerFilterSizes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllBeerFilterSizes = this.beerFilterSizes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -232,7 +232,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createBeerFilterPrices(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
       this.beerFilterPrices.push({
         name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
         selected: false
@@ -246,20 +246,20 @@ export class HeaderComponent implements OnInit {
       this.beerFilterPrices[i].selected = this.selectedAllBeerFilterPrices;
     }
   }
-  
+
   checkIfAllBeerFilterPricesSelected() {
-    this.selectedAllBeerFilterPrices = this.beerFilterPrices.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllBeerFilterPrices = this.beerFilterPrices.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
-  
+
   /**
    * Code for Liquor Filter Type
    */
 
   createLiquorFilterType(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[1].ListType.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[1].ListType.length; i++) {
       this.liquorFilterTypes.push({
         name: storeGetHomeResponce.StoreFilters[1].ListType[i].TypeName,
         selected: false
@@ -275,9 +275,9 @@ export class HeaderComponent implements OnInit {
   }
 
   checkIfAllLiquorFilterTypesSelected() {
-    this.selectedAllLiquorFilterTypes = this.liquorFilterTypes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllLiquorFilterTypes = this.liquorFilterTypes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -285,7 +285,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createLiquorFilterSizes(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[2].ListSize.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[2].ListSize.length; i++) {
       this.liquorFilterSizes.push({
         name: storeGetHomeResponce.StoreFilters[2].ListSize[i].UnitSize,
         selected: false
@@ -299,11 +299,11 @@ export class HeaderComponent implements OnInit {
       this.liquorFilterSizes[i].selected = this.selectedAllLiquorFilterSizes;
     }
   }
-  
+
   checkIfAllLiquorFilterSizesSelected() {
-    this.selectedAllLiquorFilterSizes = this.liquorFilterSizes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllLiquorFilterSizes = this.liquorFilterSizes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -311,7 +311,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createLiquorFilterPrices(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
       this.liquorFilterPrices.push({
         name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
         selected: false
@@ -325,20 +325,20 @@ export class HeaderComponent implements OnInit {
       this.liquorFilterPrices[i].selected = this.selectedAllLiquorFilterPrices;
     }
   }
-  
+
   checkIfAllLiquorFilterPricesSelected() {
-    this.selectedAllLiquorFilterPrices = this.liquorFilterPrices.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllLiquorFilterPrices = this.liquorFilterPrices.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
-  
+
   /**
    * Code for Wine Filter Type
    */
 
   createWineFilterType(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
       this.wineFilterTypes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeName,
         selected: false
@@ -354,9 +354,9 @@ export class HeaderComponent implements OnInit {
   }
 
   checkIfAllWineFilterTypesSelected() {
-    this.selectedAllWineFilterTypes = this.wineFilterTypes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllWineFilterTypes = this.wineFilterTypes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -364,7 +364,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createWineFilterSizes(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
       this.wineFilterSizes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListSize[i].UnitSize,
         selected: false
@@ -378,11 +378,11 @@ export class HeaderComponent implements OnInit {
       this.wineFilterSizes[i].selected = this.selectedAllWineFilterSizes;
     }
   }
-  
+
   checkIfAllWineFilterSizesSelected() {
-    this.selectedAllWineFilterSizes = this.wineFilterSizes.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllWineFilterSizes = this.wineFilterSizes.every(function (item: any) {
+      return item.selected == true;
+    })
   }
 
   /**
@@ -390,7 +390,7 @@ export class HeaderComponent implements OnInit {
    */
 
   createWineFilterPrices(storeGetHomeResponce) {
-    for(let i=0; i<storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
+    for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
       this.wineFilterPrices.push({
         name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
         selected: false
@@ -404,11 +404,35 @@ export class HeaderComponent implements OnInit {
       this.wineFilterPrices[i].selected = this.selectedAllWineFilterPrices;
     }
   }
-  
+
   checkIfAllWineFilterPricesSelected() {
-    this.selectedAllWineFilterPrices = this.wineFilterPrices.every(function(item:any) {
-        return item.selected == true;
-      })
+    this.selectedAllWineFilterPrices = this.wineFilterPrices.every(function (item: any) {
+      return item.selected == true;
+    })
+  }
+
+  /**
+   * Filter beer Function call
+   */
+
+  filterBeer() {
+    console.log("filterBeer function call==>")
+  }
+
+  /**
+   * Filter beer Function call
+   */
+
+  filterLiquor() {
+    console.log("filterLiquor function call==>")
+  }
+
+  /**
+   * Filter beer Function call
+   */
+
+  filterWine() {
+    console.log("filterWine function call==>")
   }
 
   UserLogout() {

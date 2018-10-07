@@ -72,15 +72,6 @@ ul.mega-dropdown-menu li ul.filters li {
       border-bottom: #d7d7d7;
   }
 
-
-
-
-
-
-
-
-
-
  .header_icon {
     background: #333;
     padding: 10px;
@@ -156,11 +147,6 @@ ul.float_right {
     margin-bottom: 0;
     /* margin-right: -15px; */
 }
-/* ul.float_right li {    
-    list-style-type: none;
-    display: inline-block;
-    outline: none;
-} */
 
 .active{
     color:#ec1c24 !important;
@@ -223,15 +209,7 @@ ul.float_right li span{
      font-family:poppinssemibold; 
     margin-left: 46px;
     
-} 
-/* ul.float_right li span{
-    margin-top: -9px;
-    display: block;
-    color: rgba(186,186,186,255);
-    font-size: 12px;
-    font-family: 'Montserrat', sans-serif !important;
-    margin-left: 46px;
-} */
+}
 ul.float_right li h6.logout{
     margin-top: -20px;
     text-align: center;
@@ -868,5 +846,32 @@ nav ul.navbar-nav li a{
        }
      
      }
+
+     .btn_right button{
+        background: #ec1c24;
+        font-family: montserratbold;
+        font-size: 11.2px;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+        color: #ffffff;
+        width: 131px;
+        text-align: center;
+        padding: 15px 0 15px; 
+        border:#ec1c24;
+        box-shadow: none;
+    }
+    .btn_right button:focus{
+        border:#ec1c24;
+        outline: none;
+        box-shadow: none;
+    }
+    .btn_right {
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+    }
      
      
