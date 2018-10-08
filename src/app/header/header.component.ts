@@ -183,7 +183,8 @@ export class HeaderComponent implements OnInit {
     for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListType.length; i++) {
       this.beerFilterTypes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeName,
-        selected: false
+        selected: false,
+        id: storeGetHomeResponce.StoreFilters[0].ListType[i].TypeId
       });
     }
     console.log("beerFilterTypes list is ==>", this.beerFilterTypes)
@@ -209,7 +210,8 @@ export class HeaderComponent implements OnInit {
     for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListSize.length; i++) {
       this.beerFilterSizes.push({
         name: storeGetHomeResponce.StoreFilters[0].ListSize[i].UnitSize,
-        selected: false
+        selected: false,
+        id: storeGetHomeResponce.StoreFilters[0].ListSize[i].SizeId
       });
     }
     console.log("beerFilterSizes list is ==>", this.beerFilterSizes)
@@ -235,7 +237,9 @@ export class HeaderComponent implements OnInit {
     for (let i = 0; i < storeGetHomeResponce.StoreFilters[0].ListPrice.length; i++) {
       this.beerFilterPrices.push({
         name: storeGetHomeResponce.StoreFilters[0].ListPrice[i].TypeName,
-        selected: false
+        selected: false,
+        id: storeGetHomeResponce.StoreFilters[0].ListType[i].SizeId
+
       });
     }
     console.log("beerFilterPrices list is ==>", this.beerFilterPrices)
@@ -416,7 +420,39 @@ export class HeaderComponent implements OnInit {
    */
 
   filterBeer() {
-    console.log("filterBeer function call==>")
+    console.log("filterBeer function call==>");
+    // filter selected Type Ids
+    let selectedTypeIds = [];
+    for (var key in this.beerFilterTypes) {
+      var obj = this.beerFilterTypes[key];
+      if (obj.selected == true) {
+        selectedTypeIds.push(obj.id)
+      }
+
+    }
+
+    // filter selected Type Ids
+    let selectedSizeIds = [];
+    for (var key in this.beerFilterSizes) {
+      var obj = this.beerFilterSizes[key];
+      if (obj.selected == true) {
+        selectedSizeIds.push(obj.id)
+      }
+
+    }
+
+    // filter selected Type Ids
+    let selectedPriceIds = [];
+    for (var key in this.beerFilterPrices) {
+      var obj = this.beerFilterPrices[key];
+      if (obj.selected == true) {
+        selectedPriceIds.push(obj.id)
+      }
+
+    }
+
+    this.router.navigate(['/home', { typeIds: selectedTypeIds, sizeIds: selectedSizeIds, priceIds: selectedPriceIds  }])
+
   }
 
   /**

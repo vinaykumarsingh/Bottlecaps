@@ -56,6 +56,7 @@ export function provideConfig() {
 const routes:Routes=[
   {path: '', component: LandingproductComponent},
   {path: 'home', component: HomepageComponent},
+  {path: 'home/:typeIds/:sizeIds/:priceIds', component: HomepageComponent},
   {path: 'aboutus', component: AboutComponent},
   {path:'recipes', component: RecipesComponent},
   {path:'recipedetails', component: RecipedetailsComponent},
